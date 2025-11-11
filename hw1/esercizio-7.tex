@@ -1,0 +1,153 @@
+\section{Esercizio 7}
+
+\begin{enumerate}[label=(\alph*)]
+\item
+
+\item Sia \(\set{f_n \mid n \in \mathbb{N} \subseteq BV[0, 1]}\) una
+  successione di Cauchy. In particolare, la successione la successione è
+  limitata, cioè possiamo scegliere \(M > 0\) tale che
+  \(\left\lVert f_n \right\rVert_{\infty,BV} \le M\) per ogni
+  \(n \in \mathbb{N}\). Inoltre la successione è di Cauchy anche
+  rispetto alla norma \(\left\lVert \cdot
+  \right\rVert_\infty\). Osserviamo a tal proposito che le
+  \(f \in BV[0, 1]\) sono limitate, e quindi
+  \(\set{f_n \mid n \in \mathbb{N}} \subseteq B[0, 1]\): questo spazio
+  vettoriale con la norma \(\left\lVert \cdot \right\rVert_\infty\) è
+  uno spazio di Banach. Quindi \(f_n\) converge \(f \in B[0, 1]\)
+  definita come segue:
+  \[
+    f(x) := \lim_{n \to +\infty} f_n(x) .
+  \]
+  Mostreremo che
+  \begin{enumerate}[label=(\roman*)]
+  \item \(f \in BV[0, 1]\).
+  \item
+    \(\lim_{n \to +\infty} \left\lVert f_n - f \right\rVert_{\infty,BV}
+    = 0\).
+  \end{enumerate}
+  \begin{enumerate}[label=(\roman*)]
+  \item Sia \(\mathcal{P} := \set{ 0 =: a_0 < \dots < a_N := 1 }\) una
+    partizione di \([a, b]\): allora
+    \begin{align*}
+      V(f, \mathcal{P}) &= \sum_{k=1}^{N} \left\lvert f(a_k) - f(a_{k-1}) \right\rvert =
+      \\
+                        & = \lim_{n \to +\infty} \sum_{k=1}^{N} \left\lvert f_n(a_k) - f_n(a_{k-1})
+                          \right\rvert \leq \\
+                        & \leq \lim_{n \to +\infty} V(f_n) \le M .
+    \end{align*}
+  \item Sia \(\epsilon > 0\). Poiché la successione è di Cauchy rispetto
+    a \(\left\lVert \cdot \right\rVert_{\infty,BV}\), sia \(\bar n\)
+    tale che
+    \(\left\lVert f_m - f_n \right\rVert_{\infty,BV} \le \epsilon\) per
+    ogni \(m , n \ge \bar n\).
+    \begin{align*}
+      V(f - f_n, \mathcal{P}) &= \sum_{k=1}^{N} \left\lvert (f - f_n)(a_k) - (f -
+                                f_n)(a_{k-1}) \right\rvert = \\
+                              &= \lim_{m \to +\infty} \sum_{k=1}^{N} \left\lvert (f_m - f_n)(a_k) - (f_m -
+                                f_n)(a_{k-1}) \right\rvert.
+    \end{align*}
+    Possiamo quindi concludere che
+    \[
+      \lim_{m \to +\infty} V(f_m - f_n) \le \lim_{m \to +\infty}
+      \left\lVert f_m - f_n \right\rVert_{\infty,BV} \le \epsilon .
+    \]
+    Per l'arbitrarietà di \(\epsilon\) concludiamo.
+  \end{enumerate}
+
+\item Ricordiamo che se \(f \in AC[0, 1]\), allora
+  \[
+    V(f) = \int_{0}^{1}\left\lvert f' \right\rvert = \left\lVert f'
+    \right\rVert_1 .
+  \]
+  Sia \(\set{ f_n \mid n \in \mathbb{N} } \subseteq AC[0, 1]\)
+  convergente a qualche \(f \in BV[0, 1]\) in norma
+  \(\left\lVert \cdot \right\rVert_{\infty,BV}\) e mostriamo che deve
+  essere \(f \in AC[0, 1]\). In particolare per ogni
+  \(n \in \mathbb{N}\) esistono quasi ovunque le derivate
+  \(f_n' \in L^1[0, 1]\) si ha
+  \[
+    f_n(x) = f_n(0) + \int_{0}^{x}f_n' \quad\text{per quasi ogni } x \in
+    [0, 1] .
+  \]
+  Poiché una successione convergente converge secondo Cauchy, in norma
+  \(\left\lVert \cdot \right\rVert_\infty\) la successione
+  \(\set{ f_n \mid n \in \mathbb{N} }\) e in norma
+  \(\left\lVert \cdot \right\rVert_1\) la successione
+  \(\set{ f_n' \mid n \in \mathbb{N} }\) sono di Cauchy. Come sopra,
+  \(f_n\) converge in norma \(\left\lVert \cdot \right\rVert_\infty\) al
+  limite puntuale di \(f_n\) che indichiamo con \(f\). Anche
+  \(L^1[0, 1]\) è completo, quindi \(f_n' \to g \in L^1[0, 1]\) in norma
+  \(\left\lVert \cdot \right\rVert_1\). Introduciamo la funzione
+  assolutamente continua
+  \begin{align*}
+    & f^\ast : [0, 1] \to \mathbb{R} \\
+    & f^\ast (x) := f(0) + \int_{0}^{x}g 
+  \end{align*}
+  Osserviamo che
+  \begin{align*}
+    \left\lVert f^\ast - f_n \right\rVert_\infty
+    &= \sup_{x \in [0, 1]} \left\lvert f(0) + \int_{0}^{x}g - f_n(0) -
+      \int_{0}^{x}f_n' \right\rvert \le \\
+    &\le \left\lvert f^\ast(0) - f_n(0) \right\rvert + \sup_{x \in [0, 1]}
+      \left\lvert \int_{0}^{x} (g - f_n') \right\rvert \le \\
+    &\le \left\lvert f^\ast(0) - f_n(0) \right\rvert + \sup_{x \in [0, 1]}
+      \int_{0}^{x} \left\lvert g - f_n' \right\rvert \le \\
+    &\le \left\lVert f^\ast - f_n \right\rVert_\infty + \int_{0}^{1} \left\lvert g
+      -f_n' \right\rvert = \\
+    &= \left\lVert f^\ast - f_n \right\rVert_\infty + \left\lVert g - f_n' \right\rVert_1
+  \end{align*}
+  Quindi
+  \[
+    \left\lVert f^\ast - f_n \right\rVert_{\infty,BV} \le \left\lVert f
+      - f_n \right\rVert_\infty + 2 \left\lVert g - f_n' \right\rVert_1
+  \]
+  Passando al limite per \(n \to +\infty\) si ha che \(f_n \to f^\ast\)
+  in norma \(\left\lVert \cdot \right\rVert_{\infty,BV}\). In
+  particolare, \(f^\ast = f\).
+
+\item
+  
+\item Mostriamo che
+  \(V(fg) \le \left\lVert f \right\rVert_\infty V(g) + \left\lVert g
+  \right\rVert_\infty V(f)\). Fissata una qualunque partizione
+  \(\mathcal{P} := \set{ 0 =: a_0 < \dots < a_N := 1 }\) di \([0, 1]\),
+  si ha
+  \begin{align*}
+    V(fg, \mathcal{P}) %&= \sum_{k=1}^{N} \left\lvert f(a_k)g(a_k) -
+    % f(a_{k-1})g(a_{k-1}) \right\rvert = \\
+                       &= \sum_{k=1}^{N} \left\lvert [f(a_k) -
+                         f(a_{k-1})]g(a_k) + f(a_{k-1})[g(a_k) - 
+                         g(a_{k-1})] \right\rvert \le \\
+                       &\le \sum_{k=1}^{N} \left\lvert f(a_k) -
+                         f(a_{k-1}) \right\rvert \left\lvert g(a_k)
+                         \right\rvert + \sum_{k=1}^{N} \left\lvert
+                         f(a_{k-1}) \right\rvert \left\lvert g(a_k) - 
+                         g(a_{k-1}) \right\rvert \le \\
+                       &\le \left\lVert g \right\rVert_\infty V(f) +
+                         \left\lVert f \right\rVert_\infty V(g)  
+  \end{align*}
+  Abbiamo quindi la disuguaglianza che ci serviva. Pertanto
+  \begin{align*}
+    \left\lVert f \right\rVert_{\infty,BV} \left\lVert g \right\rVert_{\infty,BV}
+    &= \left\lVert f \right\rVert_\infty \left\lVert g
+      \right\rVert_\infty + \left\lVert f \right\rVert_\infty V(g) + \left\lVert g
+      \right\rVert_\infty V(f) + V(f)V(g) \ge \\
+    &= \left\lVert fg \right\rVert_\infty + V(fg) = \left\lVert fg
+      \right\rVert_{\infty,BV} .
+  \end{align*}
+
+\item \(\left\lVert f \right\rVert_{\alpha, BV} \le \left\lVert f
+  \right\rVert_{\infty, BV}\). Viceversa, \(\frac{f(\alpha)}{\left\lVert
+      f \right\rVert_\infty} \left\lVert f \right\rVert_{\infty, BV} \le
+  \left\lVert f \right\rVert_{\alpha, BV}\).
+\end{enumerate}
+
+
+
+%%% Local Variables:
+%%% mode: LaTeX
+%%% TeX-engine: luatex
+%%% ispell-local-dictionary: "italian"
+%%% TeX-master: "main"
+%%% End:
+
