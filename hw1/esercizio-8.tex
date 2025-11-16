@@ -1,13 +1,28 @@
 \section{Esercizio 8}
 
 \begin{enumerate}[label=(\alph*)]
-\item Se \(f_n \to f\) in norma \(\left\lVert \cdot
-  \right\rVert_{BV}\), allora \(f_n \to f\) anche in norma \(\left\lVert
-    \cdot \right\rVert_\infty\). Quindi \(f = g\).
+\item Se \(f_n \to f\) in norma \(\left\lVert \cdot \right\rVert_{BV}\),
+  allora \(f_n \to f\) anche in norma
+  \(\left\lVert \cdot \right\rVert_\infty\). Quindi \(f = g\).
 
-\item
+\item Consideriamo la successione di funzioni
+  \begin{align}
+    & f_n : [0, 1] \to \mathbb{R} \\
+    & f_n (x) := \frac{1}{n} \cos (2 \pi n x)
+  \end{align}
+  Per l'esercizio 6, si ha che la variazione totale è
+  \[
+    V(f_n) = \int_{0}^{1} \left\lvert f_n'(x) \right\rvert \mathrm d x = 4
+  \]
+  Ora \(f_n\) converge in norma
+  \(\left\lVert \cdot \right\rVert_\infty\) alla funzione
+  \(f : [0, 1] \to \mathbb{R}\) costante a \(0\), ma non è vero che
+  \(V(f_n) \to V(f) = 0\) per \(n \to +\infty\).
 
-\item
+\item Se esistesse una tale \(c \in \mathbb{R}\), allora considerando la
+  successione del punto precedente si avrebbe
+  \(\left\lVert f \right\rVert_{\infty, BV} = 4 \leq 0 = c \left\lVert f
+  \right\rVert_\infty\).
 \end{enumerate}
 
 
