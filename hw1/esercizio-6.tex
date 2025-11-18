@@ -1,4 +1,179 @@
-\section{Esercizio 6}
+\section*{Esercizio 6}
+
+% \begin{enumerate}[label=(\alph*)]
+% \item Poiché \(f \in C^1[0, 1]\), allora
+%   \[
+%     f(y) = f(x) + \int_{x}^{y} f'(t) \mathrm d t
+%   \]
+%   Quindi, scelta una qualsiasi partizione
+%   \(\mathcal{P} := \left\{ 0 =: a_0 < \dots < a_N := 1 \right\}\), si ha
+%   \begin{align*}
+%     V(f, \mathcal{P}) &= \sum_{k=1}^{N} \left\lvert f(a_k) - f(a_{k-1}) \right\rvert \le
+%                         \sum_{k=1}^{N} \left\lvert \int_{a_{k-1}}^{a_k} f'(t) \mathrm d t
+%                         \right\rvert \le \\
+%                       &\le \sum_{k=1}^{N} \int_{a_{k-1}}^{a_k} \left\lvert f'(t)
+%                         \right\rvert \mathrm d t =
+%                         \int_{0}^{1} \left\lvert f'(t) \right\rvert \mathrm d t
+%   \end{align*}
+%   Quindi abbiamo che
+%   \(V(f) \leq \int_{0}^{1} \left\lvert f'(t) \right\rvert \mathrm d t\).
+
+%   Proviamo la disuguaglianza opposta. Poiché \(f'\) è continua su un
+%   compatto, allora è anche uniformemente continua\footnote{Teorema di
+%   Heine-Cantor.}: fissato \(\epsilon > 0\) qualsiasi, esiste
+%   \(\delta > 0\) tale che per ogni \(x, y \in [0, 1]\) tali che
+%   \(\left\lvert x - y \right\rvert \le \delta\) si ha
+%   \(\left\lvert f(x) - f(y) \right\rvert \leq \epsilon\). Sia
+%   \(\mathcal{P} := \left\{ 0 =: a_0 < \dots < a_N := 1 \right\}\) una partizione
+%   in cui \(\left\lvert a_k-a_{k-1} \right\rvert \leq \delta\) per ogni
+%   \(k\). Allora
+%   \begin{align*}
+%     \int_{a_{k-1}}^{a_k} \left\lvert f'(t) \right\rvert \mathrm d t
+%     &\le \int_{a_{k-1}}^{a_k} \left[\left\lvert f'(a_k) \right\rvert + \epsilon\right]
+%       \mathrm d t = \\
+%     &= \left\lvert \int_{a_{k-1}}^{a_k} f'(a_k) \mathrm d t \right\rvert +
+%       \epsilon(a_k - a_{k-1}) \le \\
+%     &= \left\lvert \int_{a_{k-1}}^{a_k} \left[f'(t) + \epsilon\right] \mathrm d t \right\rvert +
+%       \epsilon(a_k - a_{k-1}) \leq \\
+%     & \leq \left\lvert f(a_k) - f(a_{k-1}) \right\rvert + 2\epsilon(a_k-a_{k-1}) .
+%   \end{align*}
+%   Pertanto
+%   \[
+%     \int_{0}^{1} \left\lvert f'(t) \right\rvert \mathrm d t \le V(f, \mathcal{P}) + 2
+%     \epsilon \le V(f) + 2 \epsilon
+%   \]
+%   da cui possiamo concludere che
+%   \(\int_{0}^{1} \left\lvert f'(t) \right\rvert \mathrm d t \le V(f)\) per
+%   l'arbitrarietà di \(\epsilon > 0\).
+
+%   È immediato a questo punto verificare che
+%   \(T_f' = \left\lvert f' \right\rvert\).
+  
+% \item
+% \end{enumerate}
+
+
+\begin{enumerate}[label=(\alph*)]
+\item Mostriamo, dapprima, che $T_f \in C([0,1])$. Sia $x_0 \in [0,1]$, se
+  $x_0$ è uno dei due estremi dell'intervallo la continuità è intesa da
+  destra in $0$ e da sinistra in $1$. Si ha che
+  \[
+    |T_f(x_0 + h) - T_f(x_0)| = |V(f;[0,x_0 + h]) - V(f;[0,x_0])|.
+  \]
+  Ora distinguiamo due casi e sfruttiamo la seguente identità
+  $V(f;[a,b]) = V(f;[a,c]) + V(f;[c,b])$, valida per tutte le
+  $f \in BV([a,b])$ e $a \leq c \leq b$. Se $h>0$ si ha
+  \[
+    |T_f(x_0 + h) - T_f(x_0)|= V(f;[x_0,x_0+h]).
+  \]
+  Sia
+  $\mathcal{P} = \{\, a_0 := x_0 < a_1 < \dots < a_N := x_0 + h \,\}$ una
+  partizione dell'intervallo $[x_0,x_0+h]$. Allora
+  \[
+    V(f,P)= \sum_{i=1}^{N} \left\lvert f(a_i) - f(a_{i-1})\right\rvert \leq
+    Lh,
+  \]
+  dove nell'ultima disuguaglianza si è usato il teorema di Lagrange e
+  posto $L=\max_{x \in [0,1]} |f'(x)|$. Poiché il membro destro è
+  indipendente dalla partizione $\mathcal{P}$ scelta, si ha
+  \[
+    V(f;[x_0,x_0+h]) \leq Lh \to 0 \quad \text{per } h \to 0^{+}.
+  \]
+  In modo analogo si dimostra il caso $h<0$. Quindi, quantomeno, $T_f$ è
+  continua.  Ora dimostriamo che $ T_f'(x) = |f'(x)| $ per ogni
+  $x \in [0,1]$ e questo concluderà il punto (\(a\)).  Sia
+  $\varepsilon > 0$, $h>0$ e $x_0 \in [0,1)$, allora
+  \[
+    \left| \frac{T_f(x_0 + h) - T_f(x_0)}{h} - \left| f'(x_0) \right|
+    \right| = \left| \frac{V(f;[x_0, x_0 + h])}{h} - \left| f'(x_0)
+      \right| \right|.
+  \]
+  Sia $h$ sufficientemente piccolo tale che
+  $\forall x \in [x_0, x_0 + h]$ si ha
+  $|f'(x)-f'(x_0)| \leq \varepsilon$, (un tale $h$ esiste perché
+  $f' \in C([0,1])$). Sia
+  $\mathcal{P} = \{\, a_0 := x_0 < a_1 < \dots < a_N := x_0 + h \,\}$ una
+  partizione dell'intervallo $[x_0,x_0+h]$. Allora si ha che
+  \begin{align*}
+    V(f,P) &= \sum_{i=1}^{N} |f(a_i) - f(a_{i-1})| = \sum_{i=1}^{N} |f'(\xi_i)|(a_i - a_{i-1}) \leq \\
+           & \leq \varepsilon \sum_{i=1}^{N} (a_i - a_{i-1}) + |f'(x_0)| \sum_{i=1}^{N} (a_i - a_{i-1}) = (\varepsilon + |f'(x_0)|)h
+  \end{align*}
+  dove si è usato nuovamente il teorema di Lagrange con
+  $\xi_i \in (a_{i-1},a_i)$ e si è usato che
+  $|f'(\xi_i)| \leq |f'(\xi_i)-f'(x_0)| + |f'(x_0)| \leq \varepsilon + |f'(x_0)|$ per quanto
+  sopra. Poiché il membro destro è indipendente dalla particolare
+  partizione scelta si ha che
+  \[
+    \frac{V(f;[x_0,x_0+h])}{h} \leq \varepsilon + |f'(x_0)|.
+  \]
+  In modo analogo, usando stavolta che
+  $|f'(\xi_i)| \geq |f'(x_0)| - |f'(\xi_i)-f'(x_0)| \geq |f'(x_0)| - \varepsilon$, si ha che
+  \[
+    \frac{V(f;[x_0,x_0+h])}{h} \geq |f'(x_0)| - \varepsilon.
+  \]
+  Mettendo insieme le due disuguaglianze si ottiene
+  \[
+    \left| \frac{V(f;[x_0, x_0 + h])}{h} - \left| f'(x_0) \right|
+    \right| \leq \varepsilon.
+  \]
+  In modo analogo si ragiona per $h<0$. Avendo dimostrato che
+  $T_f \in C^1([0,1]) \subset AC([0,1])$ e che $T'_f=|f'|$ e osservando
+  banalmente che $T_f(0)=0$, si ha
+  \[
+    T_f(1)=V(f;[0,1])= \int_{[0,1]} |f'(x)| \mathrm dx .
+  \]
+
+
+\item Ci basta far vedere che per ogni $x \in [0,1]$ si ha
+  \[
+    T_f(x)=V(f;[0,x])=\int_{[0,x]} |f'(u)| \mathrm du .
+  \]
+  Sappiamo che
+  \[
+    f(x) = f(0) + \int_{[0,x]} f'(u) \mathrm du \quad \text{per ogni } x \in
+    [0,1].
+  \]
+  Quindi, fissato $x \in [0,1]$ e data
+  $P = \{\, a_0 := 0 < a_1 < \dots < a_N := x \,\}$ una partizione
+  dell'intervallo $[0,x]$, si ha
+  \begin{align*}
+    V(f,P) &=\sum_{i=1}^{N} |f(a_i)-f(a_{i-1})| = \sum_{i=1}^{N} \left\lvert
+             \int_{[a_{i-1},a_i]} f'(u) \mathrm du \right\rvert \leq \\
+           &\leq \sum_{i=1}^{N} \int_{[a_{i-1},a_i]} \left\lvert f'(u)
+             \right\rvert \mathrm du = \int_{[0,x]} \left\lvert f'(u) \right\rvert \mathrm du.
+  \end{align*}
+  Quindi questo dimostra che
+  \[
+    T_f(x) \leq \int_{[0,x]} |f'(u)| \mathrm du.
+  \]
+  Per dimostrare la disuguaglianza opposta, fissiamo $\varepsilon > 0$. Allora
+  possiamo trovare una step function $g$ su $[0,x]$, tale che $f'=g+h$
+  con $\int_{[0,x]} | h(t) | \mathrm dt < \varepsilon$. Per
+  $y \in [0,x]$ poniamo $G(y)= \int_ {[0,y]} g(u) \mathrm du$ e
+  $H(y)=\int_{[0,y]} h(u) \mathrm du$. Sia
+  $F(y)=\int_{[0,y]} f'(t) \mathrm dt$, allora $F=G+H$ e, come si vede
+  facilmente,
+  \[
+    T_F(x)=T_f(x)=V(f;[0,x]) \geq T_G(x)-T_H(x) \geq T_G(x)-\varepsilon.
+  \]
+  Sia $P = \{\, a_0 := 0 < a_1 < \dots < a_N := x \,\}$ una partizione
+  dell'intervallo $[0,x]$ in modo che la step function $g$ sia costante
+  su ciascun intervallo $(a_{i-1},a_{i})$, $i=1,2,\dots,N$. Allora
+  \begin{align*}
+    T_G(x) &\geq \sum_{i=1}^{N} \left\lvert G(a_i)-G(a_{i-1}) \right\rvert = \sum_{i=1}^{N}
+             \left\lvert \int_{[a_{i-1},a_i]} g(t) \mathrm dt \right\rvert = \\
+           &= \sum_{i=1}^{N} \int_{[a_{i-1},a_i]} \left\lvert g(t)\right\rvert \mathrm dt =
+             \int_{[0,x]} \left\lvert g(t)\right\rvert \mathrm dt .
+  \end{align*}
+  Poiché
+  $\int_{[0,x]} |g(t)| \mathrm dt \geq \int_{[0,x]} |f'(t)| \mathrm dt - \varepsilon$, si
+  ha
+  \[
+    T_F(x)=T_f(x) \geq \int_{[0,x]} |f'(t)| \mathrm dt - 2 \varepsilon.
+  \]
+  Questo conclude.
+\end{enumerate}
+
 
 %%% Local Variables:
 %%% mode: LaTeX

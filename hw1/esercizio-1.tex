@@ -1,4 +1,32 @@
-\section{Esercizio 1}
+\section*{Esercizio 1}
+
+Introduciamo la funzione
+\begin{align*}
+  & f : (0, 1) \to \mathbb{R} \\
+  & f(x) :=
+    \begin{cases}
+      \frac{1}{x (\ln x)^2} & \text{se } 0 < x < \frac{1}{2} \\
+      0 & \text{altrimenti}
+    \end{cases}
+\end{align*}
+Verifichiamo che \(f\) è integrabile.
+\[
+  \int_{(0, 1)} f(x) \mathrm d x = \int_{0}^{\frac{1}{2}} \frac{1}{x (\ln
+    x)^2} \mathrm d x = \frac{1}{\left\lvert \ln \frac{1}{2}
+    \right\rvert} < +\infty .
+\]
+Forniamo una stima dal basso di \(f^\ast\) usando le bolle \(B(x, 2x) = (0,
+2x)\). Per \(x \in \left(0, \frac{1}{2}\right)\):
+\[
+  f^\ast(x) \geq \frac{1}{\left\lvert B(x, 2x) \right\rvert} \int_{B(x, 2x)}^{} \left\lvert f(y)
+  \right\rvert \mathrm d y = \frac{1}{2x \left\lvert \ln x \right\rvert} .
+\]
+Concludiamo verificando che \(f^\ast\) non è localmente integrabile:
+\[
+  \int_{0}^{\frac12} f^\ast(y) \mathrm d y \ge \frac12 \int_{0}^{\frac12}
+  \frac{1}{y \ln y} \mathrm d y = +\infty .
+\]
+
 
 %%% Local Variables:
 %%% mode: LaTeX

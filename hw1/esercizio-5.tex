@@ -1,4 +1,77 @@
-\section{Esercizio 5}
+\section*{Esercizio 5}
+
+Iniziamo con il dimostrare che se $f,g \in AC([a,b])$, con
+$g(a)=g(b)=0$, allora
+\[
+  \int_{[a,b]} f'(x)\,g(x) \mathrm dx = -\int_{[a,b]} f(x)\,g'(x)
+  \mathrm dx.
+\]
+Come dimostrato in un altro esercizio se $f,g \in AC([a,b])$ allora
+anche $fg \in AC([a,b])$; in particolare (ricordando che, nelle nostre
+ipotesi, $g(a)=0$)
+\[
+  (fg)(x) = \int_{[a,x]} (fg)'(t) \mathrm d t \quad \forall x \in [a,b].
+\]
+Ma $(fg)'=f'g+fg'$ q.o., quindi valutando l'equazione in $x=b$ e
+ricordando che $g(b)=0$, si ottiene
+\[
+  \int_{[a,b]} f'(x)\,g(x) \mathrm dx = -\int_{[a,b]} f(x)\,g'(x)
+  \mathrm dx,
+\]
+che era quanto voluto.
+
+
+Ora scegliamo $[a,b]=[0,1]$, $f(x) = \chi_{[0,\,\tfrac{1}{2}]}(x)$ e
+$g(x)=x(x-1)$. Con queste scelte risulta
+$f \in BV([0,1]) \setminus AC([0,1])$, perché monotona, ma non continua,
+$g \in AC([0,1])$, perché di classe $C^1$; inoltre
+$f' = 0 \quad \text{q.o.}$ e $g'(x)=2x-1$. Allora si ha che
+\[
+  0=\int_{[0,1]} f'(x)\,g(x) \mathrm dx \neq -\int_{[0,1]} f(x)\,g'(x)
+  \mathrm dx = \tfrac{1}{4}.
+\]
+Infine sia $f \in C([a,b]) \cap BV([a,b])$ tale che la formula
+\[
+  \int_{[a,b]} f'(x)g(x) \mathrm dx = -\int_{[a,b]} f(x)g'(x) \mathrm dx
+\]
+valga per ogni $g \in AC([a,b])$ tale che $g(a)=g(b)=0$. Allora possiamo
+scrivere, usando Fubini/Tonelli e il fatto che $f',g' \in L^1([a,b])$,
+\[
+  \int_{[a,b]} f'(x)\,g(x) \mathrm dx = \int_{[a,b]} \Big(f'(x) \int_a^x
+  g'(t) \mathrm dt \Big) dx=
+\]
+\[
+  = \int_{[a,b]} \Big( \int_{[t,b]} f'(x) \mathrm dx \Big) g'(t) \mathrm
+  dt =-\int_{[a,b]} f(t)g'(t) \mathrm dt.
+\]
+Quindi abbiamo ottenuto
+\[
+  \int_{[a,b]} \Bigg( \int_{[t,b]} f'(x) \mathrm dx + f(t) \Bigg) g'(t)
+  \mathrm dt = 0
+\]
+per ogni \(g \in AC([a,b])\) con \(g(a)=g(b)=0\).  Ora usiamo il
+seguente risultato generale:
+
+\begin{quote}
+  sia $f \in L^1_{\mathrm{loc}}(a,b)$ tale che
+  \(\int_{[a,b]} f(x)\,\phi'(x) \mathrm dx = 0\) per ogni
+  \(\phi \in C_c^\infty(a,b)\). Allora esiste \(c \in \mathbb{R}\) per
+  cui \(f(x) = c\) per quasi ogni \(x \in [a,b]\).
+\end{quote}
+
+
+
+Nel nostro caso il lemma è applicabile dato che le funzioni di
+$C_c^\infty(a,b)$ sono funzioni di $AC([a,b])$ che si annullano agli
+estremi, e usando che $f \in C([a,b]) \cap BV([a,b])$; quindi otteniamo
+\[
+  \int_t^b f'(x) \mathrm dx + f(t) = c
+\]
+per qualche costante \(c \in \mathbb{R}\) e per ogni \(t \in [a,b]\)
+(dato che sia il membro destro che quello sinistro dell'uguaglianza sono
+funzioni continue); e poiché l'integrale di $f'$ è una funzione
+assolutamente continua (così come le costanti), otteniamo che
+$f \in AC([a,b])$, ovvero la tesi.
 
 %%% Local Variables:
 %%% mode: LaTeX

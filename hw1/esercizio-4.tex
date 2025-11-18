@@ -1,6 +1,54 @@
-\section{Esercizio 4}
+\section*{Esercizio 4}
 
+L'idea per la risoluzione di questo esercizio è quella di sfruttare la
+caratterizzazione degli insiemi di misura nulla per la misura di
+Lebesgue sulla retta reale, ovvero:\begin{center}
+  \(\forall E \subset \mathbb{R}, |E|=0 \Rightarrow \forall \varepsilon
+  >0, \exists \{I_n\}_{n\in\mathbb{N}}\) t.c.
+  \(E\subset \bigcup_{n\in\mathbb{N}} I_n\) e
+  \(\sum_{n\in\mathbb{N}} |I_n| \leq \varepsilon\)
+\end{center}
+Quindi un insieme ha misura nulla se e solo se è possibile ricoprirlo
+con una quantità numerabile di intervalli piccoli a piacere.
 
+Passiamo ora alla soluzione: sia \(\varepsilon>0\) arbitrario.  Per
+definizione di assoluta continuità esiste \(\delta=\delta(\varepsilon)>0\)
+tale che per ogni collezione finita di intervalli disgiunti
+\(\{[x_k,y_k]\}_{k=1}^N\) con
+\[
+  \sum_{k=1}^N (y_k-x_k) < \delta
+\]
+vale
+\[
+  \sum_{k=1}^N |f(y_k)-f(x_k)| < \varepsilon.
+\]
+
+Utilizziamo il \(\delta\) della definizione di assoluta continuità per
+ottenere un ricoprimento di \(E\) tramite intervalli di misura piccola,
+infatti poichè \(|E|=0\) esiste una famiglia numerabile di intervalli
+aperti \(\{I_l\}_{l=1}^{\infty}\) tale che
+\[
+  E \subset \bigcup_{l=1}^{\infty} I_k \quad\text{e}\quad
+  \sum_{l=1}^{\infty} |I_l| < \delta.
+\]
+
+Ora suddividiamo eventualmente ciascun intervallo \(I_l\) in
+sottointervalli \(\tilde{I_{j,l}}\) dove \(f\) è monotona. Questo è sempre
+possibile grazie alla continuità di \(f\).
+
+Quindi \(\{\tilde{I_{j,l}}\}_{j,l\in \mathbf{N}}\) è un ricoprimento
+aperto di \(E\) di misura totale minore di \(\delta\), quindi per ogni sua
+collezione finita di elementi la misura sarà ancora minore di \(\delta\),
+quindi per l'assolutà continuità di \(f\) la misura dell'immagine degli
+intervalli sarà minore di \(\varepsilon\).
+
+Poiché \(\{\tilde{I_{j,l}}\}_{j,l\in \mathbb{N}}\) è un ricoprimento di
+\(E\) allora \(\{f(\tilde{I_{j,l}})\}_{j,l\in \mathbb{N}}\) è un
+ricoprimento di \(f(E)\) e la sua misura è la serie delle misure degli
+intervalli a cui è applicata \(f\), serie a termini positivi di cui ogni
+somma parziale è limitata da \(\varepsilon\) stesso.
+
+Poiché \(\varepsilon>0\) era arbitrario, concludiamo che \(m(f(E))=0\).
 
 %%% Local Variables:
 %%% mode: LaTeX
