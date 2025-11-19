@@ -1,0 +1,81 @@
+
+\documentclass[11pt, a4paper]{article}
+
+\usepackage{iftex}
+
+\ifpdftex
+  \usepackage[utf8]{inputenc}
+  \usepackage[T1]{fontenc}
+  \usepackage[english,french,italian]{babel}
+\else
+  \usepackage[no-math]{fontspec}
+  \usepackage{polyglossia}
+  \setmainlanguage{italian}
+  \setotherlanguages{english,french}
+\fi
+
+\usepackage{microtype}
+
+\usepackage{enumitem}
+
+\usepackage{libertine}
+\usepackage{libertinust1math}
+\usepackage{MnSymbol}
+\usepackage{mathtools}
+\let\underbrace\LaTeXunderbrace
+\let\overbrace\LaTeXoverbrace
+\usepackage[bb=ams]{mathalfa}
+
+% \usepackage{amsthm}
+% \theoremstyle{definition}
+
+% \usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\renewcommand\hat\widehat
+\renewcommand\tilde\widetilde
+\renewcommand\bar\overline
+\newcommand\set[1]{\left\{#1\right\}}
+\newcommand\abs[1]{\left\lvert#1\right\rvert}
+\newcommand\Abs[1]{\left\lVert#1\right\rVert}
+\newcommand\mbb[1]{\mathbb #1}
+\newcommand\mcal[1]{\mathcal #1}
+\newcommand\deriv[2]{\frac{\mathrm d #1}{\mathrm d #2}}
+\newcommand\pderiv[2]{\frac{\partial^{#1}}{\partial #2^{#1}}}
+% integrale di Lebesgue
+\newcommand\leb[3]{\int_{#1} #3 \mathrm d #2}
+% note interne
+\newcommand\nota[1]{\textcolor{red}{#1}}
+\newcommand\Lip{\operatorname{Lip}}
+\newcommand\Lloc{L_{\mathrm{loc}}}
+
+
+
+\title{Analisi Reale -- Homeworks 1}
+\author{Indrjo Dedej, Micael Defo Noguem, Reema Naz Rasheed, \\
+  Umberto Santero Mormile, Lorenzo Torzolini}
+\date{Ultimo aggiornamento: \today{}.}
+
+\begin{document}
+
+\maketitle
+
+\input{esercizio-1.tex}
+\input{esercizio-2.tex}
+\input{esercizio-3.tex}
+\input{esercizio-4.tex}
+\input{esercizio-5.tex}
+\input{esercizio-6.tex}
+\input{esercizio-7.tex}
+\input{esercizio-8.tex}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: LaTeX
+%%% TeX-engine: luatex
+%%% ispell-local-dictionary: "italian"
+%%% TeX-master: t
+%%% End:
+
