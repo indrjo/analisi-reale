@@ -3,16 +3,30 @@
 Scelta una qualunque partizione
 \(\mathcal{P} := \left\{ a =: a_0 < \dots < a_N := b \right\}\) di
 \([a, b]\), abbiamo che
-\[
-  L(\Gamma_f, \mathcal{P}) \ge \sum_{k=1}^{N} \left\lvert f(a_k) - f(a_{k-1}) \right\rvert =
-  V(f, \mathcal{P})
-\]
+% \[
+%   L(\Gamma_f, \mathcal{P}) \ge \sum_{k=1}^{N} \left\lvert f(a_k) - f(a_{k-1}) \right\rvert =
+%   V(f, \mathcal{P})
+% \]
+\begin{align*}
+  L(\Gamma_f, \mathcal{P})
+  &= \sum_{k=1}^{N} \sqrt{ (a_k - a_{k-1})^2 + (f(a_k) - f(a_{k-1}))^2 } \geq \\
+  &= \sum_{k=1}^{N} \left\lvert f(a_k) - f(a_{k-1}) \right\rvert = V(f, \mathcal{P})
+\end{align*}
 da cui segue facilmente che \(L(\Gamma_f) \ge V(f)\). D'altra parte
-\[
-  L(\Gamma_f, \mathcal{P}) \le \sum_{k=1}^{N} \left\{ \left\lvert a_k -a_{k-1} \right\rvert
+% \[
+%   L(\Gamma_f, \mathcal{P}) \le \sum_{k=1}^{N} \left\{ \left\lvert a_k -a_{k-1} \right\rvert
+%     + \left\lvert f(a_k) - f(a_{k-1}) \right\rvert \right\} = b - a +
+%   V(f, \mathcal{P})
+% \]
+\begin{align*}
+  L(\Gamma_f, \mathcal{P})
+  &= \sum_{k=1}^{N} \sqrt{ (a_k - a_{k-1})^2 + (f(a_k) - f(a_{k-1}))^2 } \leq \\
+  % &= \sum_{k=1}^{N} \left\lvert f(a_k) - f(a_{k-1}) \right\rvert = V(f,
+  %   \mathcal{P}) \leq \\
+  &\le \sum_{k=1}^{N} \left\{ \left\lvert a_k -a_{k-1} \right\rvert
     + \left\lvert f(a_k) - f(a_{k-1}) \right\rvert \right\} = b - a +
   V(f, \mathcal{P})
-\]
+\end{align*}
 da cui segue che \(L(\Gamma_f) \le b-a + V(f)\). Possiamo concludere che
 \(L(\Gamma_f) < +\infty\) se e solo se \(V(f) < +\infty\).
 
