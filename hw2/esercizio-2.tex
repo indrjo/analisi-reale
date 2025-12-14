@@ -1,5 +1,59 @@
 \section*{Esercizio 2}
 
+\subsection*{Obiettivo}
+Mostrare che $L^\infty([0,1]) \subsetneq \bigcap_{p \ge 1} L^p([0,1])$.
+
+L'inclusione è banale poiché la misura è finita.
+
+\subsection*{Richiamo: Funzione Gamma}
+Per $z$ un numero complesso con $\text{Re}(z) > 0$, si definisce la
+funzione Gamma:
+\[
+  \Gamma(z) = \int_0^{+\infty} t^{z-1} e^{-t} \, dt.
+\]
+Essa è assolutamente convergente per $\text{Re}(z) > 0$.
+
+\subsection*{Dimostrazione della stretta inclusione}
+
+Per la stretta inclusione, consideriamo la funzione:
+\[
+  f(x) = \ln\left(\frac{1}{x}\right).
+\]
+
+\begin{enumerate}[label=\arabic*., leftmargin=2em]
+\item \textbf{$f \notin L^\infty([0,1])$:}
+    
+  Si ha
+  \[
+    \lim_{x \to 0^+} f(x) = \lim_{x \to 0^+} \ln\left(\frac{1}{x}\right) =
+    +\infty.
+  \]
+  Ovvero, $\forall A > 0$, $\exists \delta > 0$ tale che $\forall x \in [0, 1]$:
+  \[
+    x < \delta \implies |f(x)| > A \implies \ln\left(\frac{1}{x}\right) > A.
+  \]
+  Quindi $f \notin L^\infty([0,1])$.
+    
+\item \textbf{$f \in L^p([0,1])$ per ogni $p \ge 1$:}
+    
+  Calcoliamo la norma $L^p$:
+  \[
+    \|f\|_p^p = \int_0^1 |f(x)|^p \, dx = \int_0^1 \left(
+      \ln\left(\frac{1}{x}\right) \right)^p \, dx.
+  \]
+    
+  Poniamo $t = \ln(1/x)$. Si ottiene:
+  \[
+    \|f\|_p^p = \int_0^\infty t^p e^{-t} \, dt = \Gamma(p+1) < \infty.
+  \]
+    
+  Quindi $f \in L^p([0,1])$ per ogni $p \ge 1$.
+\end{enumerate}
+
+\subsection*{Conclusione}
+Abbiamo trovato una funzione che appartiene a tutti gli $L^p$ ma non a
+$L^\infty$, dimostrando che l'inclusione è stretta.
+
 %%% Local Variables:
 %%% mode: LaTeX
 %%% TeX-engine: luatex

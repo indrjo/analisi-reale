@@ -1,5 +1,151 @@
 \section*{Esercizio 1}
 
+\subsection*{Obiettivo}
+Mostrare che $L^p(\mathbb{R}^n) \not\subseteq L^{p'}(\mathbb{R}^n)$ per
+$p \neq p'$.
+
+\subsection*{Coordinate polari in $\mathbb{R}^n$}
+
+Sia $x = (x_1,\dots,x_n)$ e $dx = dx_1 \cdots dx_n$. Definiamo le
+coordinate polari come segue:
+\[
+  \begin{cases}
+    x_1 = r \cos\theta_1,\\[0.3em]
+    x_2 = r \sin\theta_1 \cos\theta_2,\\[0.3em]
+    x_3 = r \sin\theta_1 \sin\theta_2 \cos\theta_3,\\[0.3em]
+    x_4 = r \sin\theta_1 \sin\theta_2 \sin\theta_3 \cos\theta_4,\\[0.3em]
+    \vdots\\[0.3em]
+    x_n = r \sin\theta_1 \sin\theta_2 \cdots \sin\theta_{n-2} \sin\theta_{n-1},
+  \end{cases}
+\]
+dove $r \ge 0$ e
+\[
+  r = \sqrt{x_1^2 + \cdots + x_n^2} = |x|, \qquad
+  \theta_1,\dots,\theta_{n-2} \in (0,\pi), \quad \theta_{n-1} \in
+  [0,2\pi].
+\]
+
+In queste coordinate, si ha
+\[
+  dx = \det J \, dr \, d\theta_1 \cdots d\theta_{n-1},
+\]
+dove il determinante della matrice jacobiana vale
+\[
+  \det J = r^{n-1} \sin^{n-2}\theta_1 \sin^{n-3}\theta_2 \cdots
+  \sin^2\theta_{n-3} \sin\theta_{n-2},
+\]
+e la matrice jacobiana si scrive
+\[
+  J =
+  \begin{pmatrix}
+    \displaystyle \frac{\partial x_1}{\partial r} & \cdots & \displaystyle \frac{\partial x_1}{\partial \theta_{n-1}}\\[0.8em]
+    \vdots & \ddots & \vdots\\[0.5em]
+    \displaystyle \frac{\partial x_n}{\partial r} & \cdots & \displaystyle \frac{\partial x_n}{\partial \theta_{n-1}}
+  \end{pmatrix}.
+\]
+
+\subsection*{Caso 1: $p < p'$ (Problema di singolarità locale)}
+
+Consideriamo la funzione sulla palla unitaria
+$B(0,1) = \{ x \in \mathbb{R}^n \mid 0 < |x| < 1 \}$:
+\[
+  f(x) = \frac{1}{|x|^{\alpha}} \mathbf{1}_{B(0,1)}(x)
+\]
+e cerchiamo $\alpha$ tale che $f \in L^p(\mathbb{R}^n)$ ma
+$f \notin L^{p'}(\mathbb{R}^n)$.
+
+Calcoliamo la norma $L^p$ della funzione $f$:
+\[
+  \|f\|_p^p = \int_{\mathbb{R}^n} |f|^p \, dx = \int_{\mathbb{R}^n}
+  \frac{1}{|x|^{\alpha p}} \mathbf{1}_{B(0,1)} \, dx.
+\]
+
+Effettuando il cambio di variabile in coordinate polari ($r = |x|$ e
+$dx = J \, dr \, d\theta_1 \dots d\theta_{n-1}$):
+\begin{align*}
+  \|f\|_p^p 
+  &= \int_0^1 \int_{[0,\pi]^{n-2}} \int_0^{2\pi} 
+    \frac{1}{r^{\alpha p}} \cdot r^{n-1} \sin^{n-2}\theta_1 \dots \sin\theta_{n-2} \, dr \, d\theta_1 \dots d\theta_{n-1} \\[0.5em]
+  &= \left[ \int_{[0,\pi]^{n-2}} \int_0^{2\pi} \sin^{n-2}\theta_1 \dots \sin\theta_{n-2} \, d\theta_1 \dots d\theta_{n-1} \right] 
+    \cdot \left[ \int_0^1 \frac{r^{n-1}}{r^{\alpha p}} \, dr \right] \\[0.5em]
+  &= C \int_0^1 \frac{1}{r^{\alpha p - n + 1}} \, dr.
+\end{align*}
+
+Secondo il criterio di Riemann, l'integrale
+$\int_0^1 \frac{1}{r^a} \, dr$ converge se e solo se $a < 1$.
+
+Pertanto:
+\begin{itemize}[leftmargin=2em]
+\item $f \in L^p(\mathbb{R}^n)$ se
+  $\alpha p - n + 1 < 1 \implies \alpha < \dfrac{n}{p}$.
+    
+\item $f \notin L^{p'}(\mathbb{R}^n)$ se
+  $\displaystyle\int_0^1 \frac{1}{r^{\alpha p' - n + 1}} \, dr$ diverge,
+  il che accade quando l'esponente è $\ge 1$:
+  \[
+    \alpha p' - n + 1 \ge 1 \implies \alpha \ge \frac{n}{p'}.
+  \]
+\end{itemize}
+
+Cerchiamo dunque $\alpha$ tale che:
+\[
+  \frac{n}{p'} \le \alpha < \frac{n}{p}.
+\]
+
+Un tale $\alpha$ esiste? Sì, poiché
+$p < p' \implies \dfrac{1}{p'} < \dfrac{1}{p} \implies \dfrac{n}{p'} <
+\dfrac{n}{p}$.
+
+Passando in coordinate polari, basta scegliere
+$\alpha \in \left[\dfrac{n}{p'}, \dfrac{n}{p}\right[$.
+
+\subsection*{Caso 2: $p > p'$ (Problema di decrescita all'infinito)}
+
+Consideriamo la funzione sul complementare della palla unitaria
+\[
+  \mathbb{R}^n \setminus B(0,1) = \{ x \in \mathbb{R}^n \mid |x| \ge 1
+  \}:
+\]
+\[
+  f(x) = \frac{1}{|x|^\beta} \mathbf{1}_{\mathbb{R}^n \setminus
+    B(0,1)}(x).
+\]
+
+Calcoliamo la norma:
+\[
+  \|f\|_{p'}^{p'} = \int_{\mathbb{R}^n} |f|^{p'} \, dx =
+  \int_{\mathbb{R}^n} \frac{1}{|x|^{\beta p'}} \mathbf{1}_{\mathbb{R}^n
+    \setminus B(0,1)} \, dx.
+\]
+
+Analogamente al caso precedente, otteniamo:
+\[
+  \|f\|_{p'}^{p'} = C \int_1^{+\infty} \frac{1}{r^{\beta p'}} r^{n-1} \,
+  dr = C \int_1^{+\infty} \frac{1}{r^{\beta p' - n + 1}} \, dr.
+\]
+
+Secondo il criterio di Riemann, l'integrale
+$\int_1^{+\infty} \frac{1}{r^a} \, dr$ converge se $a > 1$ e diverge se
+$a \le 1$.
+
+Pertanto:
+\begin{itemize}[leftmargin=2em]
+\item $f \notin L^{p'}(\mathbb{R}^n)$ se
+  $\beta p' - n + 1 \le 1 \implies \beta \le \dfrac{n}{p'}$.
+    
+\item $f \in L^p(\mathbb{R}^n)$ se
+  $\beta p - n + 1 > 1 \implies \beta > \dfrac{n}{p}$.
+\end{itemize}
+
+Cerchiamo dunque $\beta$ tale che:
+\[
+  \frac{n}{p} < \beta \le \frac{n}{p'}.
+\]
+
+Un tale $\beta$ esiste? Sì, poiché
+$p' < p \implies \dfrac{1}{p} < \dfrac{1}{p'} \implies \dfrac{n}{p} <
+\dfrac{n}{p'}$.
+
 %%% Local Variables:
 %%% mode: LaTeX
 %%% TeX-engine: luatex

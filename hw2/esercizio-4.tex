@@ -1,5 +1,159 @@
 \section*{Esercizio 4}
 
+\subsection*{Ipotesi}
+Sia $\{f_n\}$ limitata in $L^p(E)$ ($p \in (1, +\infty)$) e convergente
+fortemente a $f$ in $L^1(E)$. Esiste allora una sottosuccessione
+convergente quasi ovunque.
+
+\subsection*{Parte 1: $f \in L^p(E)$}
+
+Si ha $\displaystyle\lim_{k \to \infty} f_{n_k}(x) = f(x)$ quasi ovunque, il
+che implica:
+\[
+  \lim_{k \to \infty} |f_{n_k}(x)| = |f(x)|.
+\]
+
+Poiché $x \mapsto |x|^p$ è continua:
+\[
+  \lim_{k \to \infty} |f_{n_k}(x)|^p = |f(x)|^p.
+\]
+
+Dal lemma di Fatou:
+\[
+  \int_E |f|^p \leq \int_E \liminf_{k \to \infty} |f_{n_k}|^p \le \liminf_{k \to \infty}
+  \int_E |f_{n_k}|^p \le 1.
+\]
+
+Quindi $f \in L^p(E)$.
+
+\subsection*{Parte 2: Convergenza forte in $L^r$ ($1 < r < p$)}
+
+Sappiamo che $f_n, f \in L^1(E) \cap L^p(E)$ e:
+\[
+  \|f_n - f\|_p \leq \|f_n\|_p + \|f\|_p \leq 2.
+\]
+
+Poniamo $g_n = f_n - f$.
+
+Poiché $L^1(E)$ e $L^p(E)$ sono spazi vettoriali, si ha
+$g_n \in L^1(E) \cap L^p(E)$.
+
+Da $g_n \in L^1 \cap L^p$, esistono $\mu, \lambda > 0$ tali che
+$\mu + \lambda = 1$ e $r = 1 \cdot \mu + p \cdot \lambda$.
+
+Quindi:
+\[
+  \|g_n\|_r^r = \int_E |g_n|^r = \int_E |g_n|^\mu \cdot
+  |g_n|^{p\lambda}.
+\]
+
+Poniamo $a = \dfrac{1}{\mu} > 1$ e $b = \dfrac{1}{\lambda} > 1$.
+
+Verifichiamo:
+\begin{itemize}[leftmargin=2em]
+\item
+  $\displaystyle\int_E |g_n|^{\mu a} = \int_E |g_n|^{\mu \cdot
+    \frac{1}{\mu}} = \int_E |g_n| = \|g_n\|_1 < +\infty \implies
+  |g_n|^\mu \in L^a(E)$.
+    
+\item
+  $\displaystyle\int_E |g_n|^{p\lambda b} = \int_E |g_n|^{p\lambda \cdot
+    \frac{1}{\lambda}} = \int_E |g_n|^p = \|g_n\|_p^p < +\infty \implies
+  |g_n|^{p\lambda} \in L^b(E)$.
+\end{itemize}
+
+Applichiamo la disuguaglianza di Hölder con
+$\dfrac{1}{a} + \dfrac{1}{b} = \mu + \lambda = 1$:
+\begin{align*}
+  \|g_n\|_r^r 
+  &\le \left( \int_E |g_n|^{\mu a} \right)^{1/a} \left( \int_E |g_n|^{p\lambda b} \right)^{1/b}\\[0.5em]
+  &= \left( \int_E |g_n| \right)^\mu \cdot \left( \int_E |g_n|^p \right)^\lambda\\[0.5em]
+  &= \|g_n\|_1^\mu \cdot \|g_n\|_p^{p\lambda}.
+\end{align*}
+
+Sappiamo che $\|g_n\|_1 < \varepsilon$ per $n$ sufficientemente grande
+(poiché $f_n \to f$ in $L^1$) e $\|g_n\|_p \le 2$.
+
+Quindi:
+\[
+  \|g_n\|_r^r \le \varepsilon^\mu \cdot 2^{p(1-\mu)} \implies \lim_{n
+    \to \infty}\|g_n\|_r \le \varepsilon^{\mu/r} \cdot 2^{p(1-\mu)/r},
+  \quad \forall \epsilon > 0.
+\]
+
+Facendo tendere $\varepsilon \to 0$, otteniamo:
+\[
+  \lim_{n \to \infty} \|g_n\|_r = 0 \iff \lim_{n \to \infty} \|f_n -
+  f\|_r = 0.
+\]
+
+Quindi $f_n \to f$ in $L^r(E)$.
+
+\subsection*{Parte 3: Convergenza debole in $L^p$}
+
+$f_n \rightharpoonup f$ in $L^p(E)$ (convergenza debole).
+
+Sia $g \in L^q(E)$ con $\dfrac{1}{p} + \dfrac{1}{q} = 1$.
+
+Vogliamo mostrare che:
+\[
+  \int_E f_n g \to \int_E f g \iff \int_E (f_n - f)g \to 0.
+\]
+
+\subsubsection*{Caso particolare: $g \in L^1(E) \cap L^\infty(E)$}
+
+\[
+  \left| \int_E (f_n - f)g \right| \le \int_E |f_n - f| |g| \le
+  \|g\|_\infty \int_E |f_n - f| = \|g\|_\infty \|f_n - f\|_1
+  \xrightarrow[n \to \infty]{} 0.
+\]
+
+Quindi:
+\[
+  \lim_{n \to \infty} \int_E (f_n - f)g = 0 \implies f_n \rightharpoonup
+  f \text{ in } L^p(E) \text{ per } g \in L^1 \cap L^\infty.
+\]
+
+\subsubsection*{Caso generale: $g \in L^q$}
+
+Per densità di $L^1(E) \cap L^\infty(E)$ in $L^q$, esiste
+$h \in L^1(E) \cap L^\infty(E)$ tale che:
+\[
+  \|g - h\|_q \le \varepsilon \quad \text{per ogni } \varepsilon > 0.
+\]
+
+Decomponiamo:
+\begin{align*}
+  \left| \int_E (f_n - f)g \right| 
+  &\le \left| \int_E (f_n - f)(g - h) + (f_n - f)h \right|\\[0.5em]
+  &\le \left| \int_E (f_n - f)(g - h) \right| + \left| \int_E (f_n - f)h \right|.
+\end{align*}
+
+Per il primo termine, applicando Hölder:
+\[
+  \le \|f_n - f\|_p \|g - h\|_q + \left| \int_E (f_n - f)h \right| \le 2
+  \cdot \varepsilon + \left| \int_E (f_n - f)h \right|,
+\]
+dove $\|f_n - f\|_p \le 2$.
+
+Quindi:
+\[
+  \lim_{n \to \infty} \left| \int_E (f_n - f)g \right| \le 2 \cdot
+  \varepsilon + \lim_{n \to \infty} \left| \int_E (f_n - f)h \right|.
+\]
+
+Il secondo termine tende a 0 (caso precedente). Pertanto:
+\[
+  \lim_{n \to \infty} \left| \int_E (f_n - f)g \right| \le 2
+  \varepsilon, \quad \forall \varepsilon > 0.
+\]
+
+Facendo tendere $\varepsilon \to 0$, otteniamo:
+\[
+  \lim_{n \to \infty} \int_E (f_n - f)g = 0 \implies f_n \rightharpoonup
+  f \text{ in } L^p(E).
+\]
+
 %%% Local Variables:
 %%% mode: LaTeX
 %%% TeX-engine: luatex
