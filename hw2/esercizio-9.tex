@@ -1,0 +1,105 @@
+\section*{Esercizio 9}
+Siano $p\in[1,+\infty]$ e $q$ il suo esponente coniugato, cio\`e $\tfrac1p+\tfrac1q=1$.  
+Siano $f\in L^{p}(\mathbb{R}^{n})$ e $g\in L^{q}(\mathbb{R}^{n})$.  
+È noto che la convoluzione
+\[
+(f*g)(x)=\leb{\mathbb{R}^{n}}{y}{f(y)\,g(x-y)}
+\]
+\`e ben definita e uniformemente continua. Studiamo il comportamento della convoluzione per $x\rightarrow \infty$ per dimostrare che:
+\[
+(f\ast g)(x)\longrightarrow 0 \qquad \text{quando } \Abs{x}\to\infty.
+\]
+L'idea è sfruttare la densità delle funzioni $\mathcal{C}^\infty_c$, sia in $\mathcal{L}^p$ che in $\mathcal{L}^q$, così che quando $x\rightarrow \infty$ almeno uno degli argomenti dell'integrale esca dal supporto di $f$ o $g$.
+\subsection*{Caso $1<p<\infty$}
+
+Poich\'e $1<q<\infty$, lo spazio $\mathcal{C}^\infty_c(\mathbb{R}^n)$\`e denso in $\mathcal{L}^{q}(\mathbb{R}^{n})$.  
+Dato $\varepsilon>0$, esiste dunque $\varphi\in \mathcal{C}^{\infty}_{c}(\mbb R^{n})$ tale che
+\[
+\Abs{g-\varphi}_q\le \frac{\varepsilon}{\Abs{f}_p}.
+\]
+
+Usando l'associatività della convoluzione, per ogni $x\in\mbb R^{n}$ vale la stima
+\[
+\abs{(f\ast g)(x)}
+  \le \abs{(f\ast\varphi)(x)} + \abs{(f\ast (g-\varphi))(x)}.
+\]
+
+Il secondo termine si controlla con la disuguaglianza di H\"older:
+\[
+\abs{(f*(g-\varphi))(x)}
+  \le \Abs{f}_p\Abs{g-\varphi}_q
+  \le \varepsilon.
+\]
+
+Per il primo termine scriviamo, denotando con $K=$supp$(\varphi)$:
+\[
+(f*\varphi)(x)=\leb{K}{y}{\varphi(y)\,f(x-y)}.
+\]
+Applicando di nuovo H\"older:
+\[
+\abs{(f*\varphi)(x)}
+ \le \Abs{\varphi}_q\,\Abs{f\cdot\chi_{x-K}}_p,
+\]
+dove $x-K=\set{x-y:y\in K}$.
+
+Poich\'e $K$ è compatto, esiste $R>0$ tale che
+\[
+\Abs{f\,\chi_{B(0,R)^c}}_p<\delta
+\]
+per un $\delta>0$ arbitrario (essendo $f\in \mathcal{L}^{p}$).\\ 
+Dunque definitivamente $\Abs{x}>R+$diam$(K)$ (supponendo $\Abs{x}\rightarrow\infty)$ si ha $x-K\subset B(0,R)^c$, dunque
+\[
+\Abs{f\,\chi_{x-K}}_p<\delta.
+\]
+
+Segue quindi
+\[
+\abs{(f\ast\varphi)(x)} \le \Abs{\varphi}_q\cdot\delta \xrightarrow[\Abs{x}\to\infty]{} 0.
+\]
+
+Combinando le due stime otteniamo
+\[
+\limsup_{\Abs{x}\to\infty} \abs{(f\ast g)(x)}
+   \le \varepsilon.
+\]
+Poiché $\varepsilon>0$ è arbitrario, segue che
+\[
+(f\ast g)(x)\longrightarrow 0 \qquad \text{quando } \Abs{x}\to\infty.
+\]
+
+\subsection*{Caso $p=1$}
+
+Il risultato non vale in generale.  
+Un controesempio semplice è il seguente:
+\[
+f \in \mathcal{L}^{1}, \Abs{f}_1\neq 0,
+\qquad g \equiv 1 \in \mathcal{L}^{\infty}.
+\]
+Allora per ogni $x$:
+\[
+(f*g)(x)=\leb{\mbb R^{n}}{y}{f(y)} = \Abs{f}_1,
+\]
+una costante non nulla.  
+Dunque $(f\ast g)(x)\not\to 0$ all'infinito.
+
+\subsection*{Caso $p=+\infty$}
+
+Consideriamo l'esempio simmetrico:
+\[
+f\equiv 1 \in \mathcal{L}^{\infty}, \qquad g\in \mathcal{L}^{1},\Abs{g}_1\neq 0,
+\]
+Allora
+\[
+(f*g)(x)=\leb{\mbb R^{n}}{y}{g(y)}=\Abs{g}_1,
+\]
+ancora una costante non nulla.
+
+Evidentemente il problema è che le funzioni in $\mathcal{L}^\infty$ non sono tutte approssimabili con funzioni a supporto compatto, che garantiscono invece la nullità in intorni dell'infinito. 
+
+
+%%% Local Variables:
+%%% mode: LaTeX
+%%% TeX-engine: luatex
+%%% ispell-local-dictionary: "italian"
+%%% TeX-master: "main"
+%%% End:
