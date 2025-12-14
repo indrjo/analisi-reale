@@ -1,4 +1,29 @@
 \section*{Esercizio 8}
+Dati $A,B\subset\mathbb{R}^n$ di misura strettamente positiva e finita ($0<\abs{A},\abs{B}<\infty$)allora le loro rispettive funzioni caratteristiche $\chi_A$ e $\chi_B$ sono chiaramente in $\mathcal{L}^2(\mathbb{R}^n)$ poiché le loro $\mathcal{L}^2$-norme sono proprio le misure di Lebesgue dei due insiemi, finite per ipotesi.
+
+Sono quindi soddisfatte le ipotesi del Teorema 2.9.4 sull'esistenza e regolarità della loro convoluzione:\begin{itemize}
+    \item $\chi_A\in \mathcal{L}^p(\mathbb{R}^n)$, p=2;
+    \item $\chi_B\in \mathcal{L}^q(\mathbb{R}^n)$, q=2, esponente coniugato di p.
+\end{itemize}
+
+Abbiamo quindi che $\chi_A\ast\chi_B$ è ben definita, appartiene a $\mathcal{L}^\infty(\mathbb{R}^n)$ ed è uniformente continua, quindi \textbf{continua}.
+
+Prima di continuare abbiamo bisogno di caratterizzare il comportamento di $\chi_A\ast\chi_B$, sfruttando il fatto che stiamo integrando funzioni caratteristiche:
+$$\chi_A\ast\chi_B(x)=\int_{\mathbb{R}^n} \chi_A(y)\cdot\chi_B(x-y)dy=\int_A\chi_B(x-y)dy=\int_{x-A}\chi_B(y)dy=\abs{B\cap(x-A)}$$
+Dove con $x-A$ intendiamo l'insieme $A$ riflesso rispetto all'origine e traslato di $x$.
+Quindi $\chi_A\ast\chi_B(x)$ assume come valore la misura dell'intersezione tra $B$ e il traslato di $x$ di $-A$.
+Data la simmetria della convoluzione abbiamo anche:
+$$\chi_A\ast\chi_B(x)=\abs{B\cap(x-A)}=\abs{A\cap(x-B)}$$
+
+Data l'invarianza per traslazioni della misura di Lebesgue abbiamo anche che $\chi_A\ast\chi_B$ non è quasi-ovunque nulla e quindi \textbf{ha supporto di misura positiva} infatti: 
+$$\int_{\mathbb{R}^n} \chi_A\ast\chi_B(x) dx= \iint_{\mathbb{R}^n\times\mathbb{R}^n} \chi_A(y)\cdot\chi_B(x-y)dy dx =\abs{A}\cdot\abs{B} > 0$$
+%Questa parte è relativamente utile visto che comunque si dimostra che A+B (non vuoto) è contenuto in supp(f*g)
+
+L'ultimo fatto che ci serve è dimostrare che $\chi_A\ast\chi_B$ sia positiva in $A+B$.\\
+Questo deriva dal fatto visto ad Esercitazione sul supporto della convoluzione:
+Siano $f\in\mathcal{L}^p(\mathbb{R}^n)$, $g\in\mathcal{L}^q(\mathbb{R}^n)$, $p$ e $q$ esponenti coniugati, con supp$(f)\subset A$ e supp$(g)\subset B$ allora supp$(f\ast g)\subset A+B$. Si dimostra infatti la contronominale, ovvero che se $x\notin A+B$ allora $\forall y\in B$, $x-y\notin A$, quindi $f(x-y)=0$, allora la convoluzione sarà nulla in $x$, dunque $x$ non appartiene al supporto (possiamo estendere la proprietà alla chiusura perché è il supporto di una funzione continua).
+
+Esiste quindi $x_0\in A+B$ t.c. $\chi_A\ast\chi_B(x_0)>0$, per la continuità di $\chi_A\ast\chi_B$ allora $\exists r>0$ t.c. $\chi_A\ast\chi_B(x)>0$ $\forall x\in B(x_0,r)$. Questa bolla è contenuta a sua volta in $A+B$ infatti $\forall x\in B(x_0,r)$ $\chi_A\ast\chi_B(x)>0$ implica che $\abs{A\cap(x-B)}>0$ ovvero che $x\in A+B$, da cui la tesi.
 
 %%% Local Variables:
 %%% mode: LaTeX
