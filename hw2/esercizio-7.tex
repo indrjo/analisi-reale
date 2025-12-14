@@ -1,5 +1,46 @@
 \section*{Esercizio 7}
+Siano $p\in [1,\infty)$ e $f\in\mathcal{L}^p(\mbb R^n)$ e $\tau_h$ l'operatore lineare da $\mathcal{L}^p(\mbb R^n)$ in $\mathcal{L}^p(\mbb R^n)$ che trasla l'argomento della funzione di un vettore fissato $h\in\mbb R^n$.\\
+Come fatti noti prendiamo che $\tau_h$ è un'operatore continuo ed inoltre è un'isometria.\\
+Per la densità di $\mathcal{C}^\infty_c(\mbb R^n)$ in $\mathcal{L}^p(\mbb R^n)$ sia una funzione $g\in \mathcal{C}^\infty_c(\mbb R^n)$ che approssimi abbastanza bene $f$, per $g$ i calcoli saranno più semplici dato che $\tau_hg$ e $g$ avranno supporti definitivamente disgiunti.
+Abbiamo infatti:
+\[
+\forall\varepsilon>0, \exists g\in\mathcal{C}^\infty_c(\mbb R^n)\text{ con } \Abs{f-g}_p <\varepsilon
+\] 
+Per la disuguaglianza triangolare abbiamo ovviamente che:
+\[
+\abs{\Abs{f}_p-\Abs{g}_p}<\varepsilon
+\]
+Procediamo ponendo $K=\text{supp}(g)$ e $K_h=\text{supp}(\tau_h g)$, ovviamente $K_h= K+h$, entrambi compatti di $\mbb R^n$, quindi limitati e poiché andremo a studiare il comportamento per $\Abs{h}\rightarrow\infty$ possiamo considerarli definitivamente disgiunti.\\
+Calcoliamo ora $\Abs{\tau_h g+g}_p^p$, con $h$ fissato in modo tale che $K\cap K_h=\emptyset$:
+\[
+\Abs{\tau_h g+g}_p^p=\int_{\mbb R^n} \abs{\tau_h g+g}^p=\int_{K_h} \abs{\tau_h g}^p + \int_{K} \abs{g}^p=\Abs{\tau_h g}_p^p + \Abs{g}_p^p=2\Abs{g}_p^p
+\]
+Per la seconda uguaglianza usiamo come partizione di $\mbb R^n$ gli insiemi $K, K_h$ e $(K\cup K_h)^c$ unito al fatto che le due funzioni sono nulle al di fuori dei propri supporti, la terza uguaglianza invece per come sono definite le norme e per l'ultima invece il fatto che $\tau_h$ sia un'isometria.
 
+Abbiamo quindi:
+$$\lim_{\Abs{h} \to \infty}\Abs{\tau_h g+g}_p=2^{\frac{1}{p}}\Abs{g}_p$$
+
+Possiamo concludere notando che: 
+\begin{align*}
+\Abs{\tau_h f + f}_p
+&= \Abs{\tau_h f - \tau_h g + f - g + \tau_h g + g}_p \\
+&\le \Abs{\tau_h f - \tau_h g}_p
+   + \Abs{f - g}_p
+   + \Abs{\tau_h g + g}_p \\
+&\le \Abs{\tau_h g + g}_p + 2\varepsilon .
+\end{align*}
+
+Nell'ultima maggiorazione usiamo che $\tau_h$ è lineare e mantiene le norme.
+
+Allora:
+\begin{align*}
+\limsup_{\Abs{h} \to \infty} \Abs{\tau_h f + f}_p
+&\le \limsup_{\Abs{h} \to \infty} \Abs{\tau_h g + g}_p + 2\varepsilon \\
+&= 2^{\frac{1}{p}} \Abs{g}_p + 2\varepsilon \\
+&\le 2^{\frac{1}{p}} \bigl( \Abs{f}_p + \varepsilon \bigr) + 2\varepsilon \\
+&= 2^{\frac{1}{p}} \Abs{f}_p + c_\varepsilon\, \varepsilon .
+\end{align*}
+Da cui la tesi.
 %%% Local Variables:
 %%% mode: LaTeX
 %%% TeX-engine: luatex
