@@ -1,104 +1,81 @@
 \section*{Esercizio 5}
 
-\subsection*{Contesto}
-Consideriamo $f \in L^1(\mathbb{R})$ e la successione delle traslazioni
-$f_n(x) := f(x-n)$.
+Sia $f \in L^1(\mathbb{R})$ e la successione delle traslazioni
+$f_n := \tau_n f$. Sappiamo che se $p \in (1, +\infty)$, allora $f_n \rightharpoonup 0$. Mostriamo qui che
+questo è {\em falso} per $p=1$.
 
-Sappiamo che per $p \in (1, +\infty)$, $f_n \rightharpoonup 0$ debolmente. Mostriamo qui che
-questo è \textbf{falso} per $p=1$.
-
-\subsection*{a)}
-
-Sia $h \in C_c(\mathbb{R})$ una funzione continua a supporto compatto, diciamo
-$\text{supp}(h) \subset [-T, T]$.
-
-Studiamo il limite di $\displaystyle\int_{\mathbb{R}} f_n(x) h(x) \, dx$.
-
-Con il cambio di variabile $y = x - n$:
-\[
-  \left| \int_{\mathbb{R}} f(x-n) h(x) \, dx \right| \le \|h\|_\infty \int_{-T}^T |f(x-n)| \, dx
-  = \|h\|_\infty \int_{-T-n}^{T-n} |f(y)| \, dy.
-\]
-
-Poiché $f \in L^1(\mathbb{R})$:
-\[
-  \lim_{n \to \infty} \int_{-T-n}^{T-n} |f(y)| \, dy = 0.
-\]
-
-Quindi:
-\[
-  \lim_{n \to \infty} \int f_n h = 0 \quad \text{per ogni } h \in C_c(\mathbb{R}).
-\]
-
-\subsection*{b)}
-
-Sia $g \in C_c(\mathbb{R})$ a supporto in $[-T, T]$. Sia $s(x) = \text{sgn}(g(x))$.
-
-Definiamo:
-\[
-  h(x) = \sum_{k \in \mathbb{Z}} s(x - 2kT).
-\]
-
-\subsubsection*{1. Mostrare che $\|h\|_{\infty,\text{ess}} \le 1$}
-
-I supporti dei termini $s(x-2kT)$ sono disgiunti, intervalli di
-lunghezza $2T$.
-
-Quindi, per ogni $x$, la somma contiene al massimo un termine non
-nullo. Poiché $|s| \le \|s\|_\infty= 1$, si ha:
-\[
-  \|h\|_{\infty,\text{ess}} \le 1,
-\]
-quindi $h \in L^\infty(\mathbb{R})$.
-
-\subsubsection*{2. Test sulla successione}
-
-Consideriamo la successione traslata $g_n(x) = g(x - 2nT)$.
-\begin{align*}
-  \int_{\mathbb{R}} g_n(x) h(x) \, dx 
-  &= \int_{\mathbb{R}} g(x - 2nT) \left( \sum_{k \in \mathbb{Z}} s(x - 2kT) \right) \, dx.
-\end{align*}
-
-L'unico termine della somma che si sovrappone al supporto di $g(x-2nT)$
-è quello per $k=n$:
-\begin{align*}
-  &= \int_{\mathbb{R}} g(x - 2nT) s(x - 2nT) \, dx\\[0.5em]
-  &= \int_{\mathbb{R}} g(y) s(y) \, dy\\[0.5em]
-  &= \int_{\mathbb{R}} |g(y)| \, dy = \|g\|_1.
-\end{align*}
-
-\subsection*{c) Conclusione generale per densità}
-
-Sia ora $f \in L^1(\mathbb{R})$ qualsiasi (non nulla).
-
-Per densità delle funzioni continue a supporto compatto, per ogni
-$\epsilon > 0$, esiste $g \in C_c(\mathbb{R})$ tale che:
-\[
-  \|f - g\|_1 < \epsilon.
-\]
-
-Costruiamo $h$ associata a questo $g$ come sopra.
-
-Decomponiamo l'integrale:
-\[
-  \int f_n h = \int g_n h + \int (f_n - g_n) h.
-\]
-
-\begin{itemize}
-\item Il primo termine vale $\|g\|_1$ (costante).
-    
-\item Il secondo termine è limitato per Hölder:
+\begin{enumerate}[label=(\alph*)]
+\item Sia $h \in C_c(\mathbb{R})$ una funzione continua a supporto compatto,
+  diciamo $\text{supp}(h) \subset [-T, T]$. Studiamo il limite di
+  $\displaystyle\int_{\mathbb{R}} f_n(x) h(x) \, \mathrm dx$.  Con il cambio di
+  variabile $y = x - n$:
   \[
-    \left| \int (f_n - g_n) h \right| \le \|f_n - g_n\|_1 \|h\|_\infty
-    \le \|f - g\|_1 \cdot 1 < \epsilon.
+    \left| \int_{\mathbb{R}} f(x-n) h(x) \, \mathrm dx \right| \le \|h\|_\infty \int_{-T}^T
+    |f(x-n)| \, \mathrm dx = \|h\|_\infty \int_{-T-n}^{T-n} |f(y)| \, \mathrm dy.
   \]
-\end{itemize}
+  Poiché $f \in L^1(\mathbb{R})$:
+  \[
+    \lim_{n \to \infty} \int_{-T-n}^{T-n} |f(y)| \, \mathrm dy = 0.
+  \]
+  Quindi:
+  \[
+    \lim_{n \to \infty} \int f_n h = 0 \quad \text{per ogni } h \in C_c(\mathbb{R}).
+  \]
 
-Quindi, $\displaystyle\int f_n h$ rimane nell'intorno di $\|g\|_1 > 0$ e
-non tende a 0.
+\item Sia $g \in C_c(\mathbb{R})$ a supporto in $[-T, T]$. Sia
+  $s(x) = \text{sgn}(g(x))$ e
+  \[
+    h(x) = \sum_{k \in \mathbb{Z}} s(x - 2kT).
+  \]
 
-\subsection*{Conclusione}
-La successione $(f_n)$ non converge debolmente a 0 in $L^1(\mathbb{R})$.
+  I supporti dei termini $s(x-2kT)$ sono disgiunti, intervalli di
+  lunghezza $2T$.  Quindi, per ogni $x$, la somma contiene al massimo un
+  termine non nullo. Poiché $|s| \le \|s\|_\infty= 1$, si ha:
+  \[
+    \|h\|_{\infty,\text{ess}} \le 1,
+  \]
+  quindi $h \in L^\infty(\mathbb{R})$.
+
+  Consideriamo la successione traslata $g_n(x) = g(x - 2nT)$.
+  \begin{align*}
+    \int_{\mathbb{R}} g_n(x) h(x) \, \mathrm dx 
+    &= \int_{\mathbb{R}} g(x - 2nT) \left( \sum_{k \in \mathbb{Z}} s(x - 2kT) \right) \, \mathrm dx.
+  \end{align*}
+  L'unico termine della somma che si sovrappone al supporto di
+  $g(x-2nT)$ è quello per $k=n$:
+  \begin{align*}
+    &= \int_{\mathbb{R}} g(x - 2nT) s(x - 2nT) \, \mathrm dx\\[0.5em]
+    &= \int_{\mathbb{R}} g(y) s(y) \, \mathrm dy\\[0.5em]
+    &= \int_{\mathbb{R}} |g(y)| \, \mathrm dy = \|g\|_1.
+  \end{align*}
+
+\item Sia ora $f \in L^1(\mathbb{R})$ qualsiasi (non nulla).  Per densità delle
+  funzioni continue a supporto compatto, per ogni $\epsilon > 0$, esiste
+  $g \in C_c(\mathbb{R})$ tale che:
+  \[
+    \|f - g\|_1 < \epsilon.
+  \]
+  Costruiamo $h$ associata a questa $g$ come sopra. Decomponiamo
+  l'integrale:
+  \[
+    \int f_n h = \int g_n h + \int (f_n - g_n) h.
+  \]
+  ed osserviamo:
+  \begin{itemize}
+  \item Il primo termine vale $\|g\|_1$ (costante).
+    
+  \item Il secondo termine è limitato per Hölder:
+    \[
+      \left| \int (f_n - g_n) h \right| \le \|f_n - g_n\|_1 \|h\|_\infty \le \|f - g\|_1 \cdot
+      1 < \epsilon.
+    \]
+  \end{itemize}
+  Quindi, $\int f_n h$ rimane nell'intorno di $\|g\|_1 > 0$ e non tende a 0.
+  La successione $(f_n)$ non converge debolmente a 0 in $L^1(\mathbb{R})$.
+  
+\end{enumerate}
+
+
 
 %%% Local Variables:
 %%% mode: LaTeX

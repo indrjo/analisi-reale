@@ -1,56 +1,29 @@
 \section*{Esercizio 3}
 
-\subsection*{Obiettivo}
-Consideriamo $\iota : L^q(E) \hookrightarrow L^p(E)$ con $|E| < \infty$ e $1 \leq p \le q \leq \infty$.
-
-\subsection*{Parte 1: Continuità}
+Consideriamo l'inclusione $\iota : L^q(E) \hookrightarrow L^p(E)$, dove $|E| < \infty$ e $1 \leq p
+\le q \leq \infty$. È immediato mostrare che è lineare. Proviamo che è un
+operatore continuo mostrando che è limitato.
 
 Sia $f \in L^q(E)$. Applichiamo la disuguaglianza di Hölder con gli
-esponenti coniugati $\alpha = q/p$ e $\beta = q/(q-p)$:
+esponenti coniugati $\alpha = q/p$ e $\beta = q/(q-p)$.
 \[
-  \|f\|_p^p = \int_E |f|^p \cdot 1 \, dx \le \left( \int_E (|f|^p)^{q/p} \right)^{p/q}
+  \|f\|_p^p = \int_E |f|^p \cdot 1 \mathrm dx \le \left( \int_E (|f|^p)^{q/p} \right)^{p/q}
   \left( \int_E 1^{\frac{q}{q-p}} \right)^{1 - p/q}.
 \]
-
 Pertanto:
 \[
-  \|f\|_p \le \|f\|_q \cdot |E|^{\frac{1}{p} - \frac{1}{q}}.
+  \|\iota f\|_p \le \|f\|_q |E|^{\frac{1}{p} - \frac{1}{q}}.
 \]
-
-L'operatore è limitato, quindi continuo.
-
-\subsection*{Parte 2: Norma dell'operatore}
-
-Si ha $1 \in L^p(E)$ e $1 \in L^q(E)$.
-
-Calcolo delle norme:
+Quindi
 \[
-  \|f\|_p = |E|^{1/p} \qquad\text{e}\qquad \|f\|_q = |E|^{1/q}.
+  \left\lVert \iota \right\rVert = \sup_{f \ne 0} \frac{\left\lVert \iota f
+    \right\rVert_p}{\left\lVert f \right\rVert_q} \le |E|^{\frac{1}{p} -
+    \frac{1}{q}} .
 \]
+In realtà, scegliendo \(f\) la funzione costante a \(1\), si ha
+\(\left\lVert \iota \right\rVert = |E|^{\frac{1}{p} - \frac{1}{q}}\).
 
-Quindi:
-\[
-  \left\|\frac{f}{\|f\|_q} \right\|_p = \frac{\|f\|_p}{\|f\|_q} =
-  \frac{|E|^{1/p}}{|E|^{1/q}} = |E|^{1/p - 1/q} < +\infty \implies
-  \frac{f}{\|f\|_q} \in L^p(E).
-\]
 
-Dalla definizione della norma duale:
-\[
-  \left\| \frac{f}{\|f\|_q} \right\|_q = \frac{\|f\|_q}{\|f\|_q} = 1.
-\]
-
-Quindi:
-\[
-  \left\| \iota\left(\frac{f}{\|f\|_q} \right)\right\|_p \leq \|\iota\|.
-\]
-
-\subsection*{Conclusione}
-Testando con la funzione costante $f(x) = 1$, si raggiunge
-l'uguaglianza. La norma dell'operatore è quindi esattamente:
-\[
-  \|\iota\| = |E|^{\frac{1}{p} - \frac{1}{q}}.
-\]
 
 %%% Local Variables:
 %%% mode: LaTeX

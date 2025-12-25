@@ -9,14 +9,14 @@ Sono quindi soddisfatte le ipotesi del Teorema 2.9.4 sull'esistenza e regolarit�
 Abbiamo quindi che $\chi_A\ast\chi_B$ è ben definita, appartiene a $\mathcal{L}^\infty(\mathbb{R}^n)$ ed è uniformente continua, quindi \textbf{continua}.
 
 Prima di continuare abbiamo bisogno di caratterizzare il comportamento di $\chi_A\ast\chi_B$, sfruttando il fatto che stiamo integrando funzioni caratteristiche:
-$$\chi_A\ast\chi_B(x)=\int_{\mathbb{R}^n} \chi_A(y)\cdot\chi_B(x-y)dy=\int_A\chi_B(x-y)dy=\int_{x-A}\chi_B(y)dy=\abs{B\cap(x-A)}$$
+$$\chi_A\ast\chi_B(x)=\int_{\mathbb{R}^n} \chi_A(y)\cdot\chi_B(x-y)\mathrm dy=\int_A\chi_B(x-y)\mathrm dy=\int_{x-A}\chi_B(y)\mathrm dy=\abs{B\cap(x-A)}$$
 Dove con $x-A$ intendiamo l'insieme $A$ riflesso rispetto all'origine e traslato di $x$.
 Quindi $\chi_A\ast\chi_B(x)$ assume come valore la misura dell'intersezione tra $B$ e il traslato di $x$ di $-A$.
 Data la simmetria della convoluzione abbiamo anche:
 $$\chi_A\ast\chi_B(x)=\abs{B\cap(x-A)}=\abs{A\cap(x-B)}$$
 
 Data l'invarianza per traslazioni della misura di Lebesgue abbiamo anche che $\chi_A\ast\chi_B$ non è quasi-ovunque nulla e quindi \textbf{ha supporto di misura positiva} infatti: 
-$$\int_{\mathbb{R}^n} \chi_A\ast\chi_B(x) dx= \iint_{\mathbb{R}^n\times\mathbb{R}^n} \chi_A(y)\cdot\chi_B(x-y)dy dx =\abs{A}\cdot\abs{B} > 0$$
+$$\int_{\mathbb{R}^n} \chi_A\ast\chi_B(x) \mathrm dx= \iint_{\mathbb{R}^n\times\mathbb{R}^n} \chi_A(y)\cdot\chi_B(x-y)\mathrm dy \mathrm dx =\abs{A}\cdot\abs{B} > 0$$
 %Questa parte è relativamente utile visto che comunque si dimostra che A+B (non vuoto) è contenuto in supp(f*g)
 
 L'ultimo fatto che ci serve è dimostrare che $\chi_A\ast\chi_B$ sia positiva in $A+B$.\\

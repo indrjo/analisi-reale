@@ -1,58 +1,24 @@
 \section*{Esercizio 2}
 
-\subsection*{Obiettivo}
-Mostrare che $L^\infty([0,1]) \subsetneq \bigcap_{p \ge 1} L^p([0,1])$.
-
-L'inclusione è banale poiché la misura è finita.
-
-\subsection*{Richiamo: Funzione Gamma}
-Per $z$ un numero complesso con $\text{Re}(z) > 0$, si definisce la
-funzione Gamma:
+Troviamo \(f : [0, 1] \to \mathbb{R}\) che stia in tutti gli
+\(L^p[0, 1]\), con \(p \ge 1\), ma non in \(L^\infty[0, 1]\). Consideriamo:
 \[
-  \Gamma(z) = \int_0^{+\infty} t^{z-1} e^{-t} \, dt.
+  f(x) :=
+  \begin{cases}
+    0  & \text{se } x = 0 \\
+    \ln\left(\frac{1}{x}\right) & \text{altrimenti}
+  \end{cases}
 \]
-Essa è assolutamente convergente per $\text{Re}(z) > 0$.
-
-\subsection*{Dimostrazione della stretta inclusione}
-
-Per la stretta inclusione, consideriamo la funzione:
+Qui $f \notin L^\infty([0,1])$, perché ad esempio \(\lim_{x \to 0^+} f(x) = +\infty\).
+Inoltre
 \[
-  f(x) = \ln\left(\frac{1}{x}\right).
+  \left\lVert f \right\rVert_p^p = \int_0^1 \left(
+    \ln\left(\frac{1}{x}\right) \right)^p \mathrm dx = \int_0^\infty t^p e^{-t}
+  \mathrm dt < \infty.
 \]
+Quindi $f \in L^p([0,1])$ per ogni $p \ge 1$.
 
-\begin{enumerate}[label=\arabic*., leftmargin=2em]
-\item \textbf{$f \notin L^\infty([0,1])$:}
-    
-  Si ha
-  \[
-    \lim_{x \to 0^+} f(x) = \lim_{x \to 0^+} \ln\left(\frac{1}{x}\right) =
-    +\infty.
-  \]
-  Ovvero, $\forall A > 0$, $\exists \delta > 0$ tale che $\forall x \in [0, 1]$:
-  \[
-    x < \delta \implies |f(x)| > A \implies \ln\left(\frac{1}{x}\right) > A.
-  \]
-  Quindi $f \notin L^\infty([0,1])$.
-    
-\item \textbf{$f \in L^p([0,1])$ per ogni $p \ge 1$:}
-    
-  Calcoliamo la norma $L^p$:
-  \[
-    \|f\|_p^p = \int_0^1 |f(x)|^p \, dx = \int_0^1 \left(
-      \ln\left(\frac{1}{x}\right) \right)^p \, dx.
-  \]
-    
-  Poniamo $t = \ln(1/x)$. Si ottiene:
-  \[
-    \|f\|_p^p = \int_0^\infty t^p e^{-t} \, dt = \Gamma(p+1) < \infty.
-  \]
-    
-  Quindi $f \in L^p([0,1])$ per ogni $p \ge 1$.
-\end{enumerate}
 
-\subsection*{Conclusione}
-Abbiamo trovato una funzione che appartiene a tutti gli $L^p$ ma non a
-$L^\infty$, dimostrando che l'inclusione è stretta.
 
 %%% Local Variables:
 %%% mode: LaTeX
