@@ -1,0 +1,42 @@
+\section*{Esercizio 7}
+
+\begin{enumerate}
+\item {\em Mostriamo che \(T \in \mathcal{L}(\mathcal{H})\) è autoaggiunto.} In questo caso,
+  ricordiamo che il prodotto scalare di \(\mathcal{H}\) è definito come
+  \[
+    \left\langle f, g \right\rangle = \int_{[0,1]}^{} f(x) \bar{g(x)} \mathrm d x .
+  \]
+  Verifichiamo quindi che
+  \(\left\langle Tf, g \right\rangle = \left\langle f, Tg \right\rangle\) per calcolo
+  diretto. Il primo membro è
+  \[
+    \left\langle Tf, g \right\rangle = \int_{[0, 1]}^{} \int_{[0, 1]}^{} K(x, y) f(y)
+    \bar{g(x)} \mathrm d y \mathrm d x
+  \]
+  mentre il secondo membro è
+  \[
+    \left\langle f, Tg \right\rangle = \int_{[0, 1]}^{} \int_{[0, 1]}^{} \bar{K(x, y)}
+    f(y) \bar{g(x)} \mathrm d y \mathrm d x
+  \]
+  Per concludere questa parte basta osservare che \(K = \bar{K}\).
+
+\item {\em \(T\) è compatto.}
+  \(K \in \mathcal{L}^2([0, 1] \times [0, 1])\) e quindi \(T\) è un operatore di
+  Hilbert-Schmidt, che è compatto. (Cfr. Proposizione 3.5.2 delle note
+  del corso.)
+
+\item {\em Trovare lo spettro di \(T\).} Osserviamo che essendo \(T\)
+  autoaggiunto, allora i suoi autovalori sono tutti reali
+  (cfr. Proposizione 3.6.6). Inoltre gli elementi non nulli dello spetto
+  sono autovalori di \(T\) (cfr. Proposizione 3.6.9). {\color{red} [Niente.]}
+\end{enumerate}
+
+
+
+%%% Local Variables:
+%%% mode: LaTeX
+%%% TeX-engine: luatex
+%%% ispell-local-dictionary: "italian"
+%%% TeX-master: "main"
+%%% End:
+

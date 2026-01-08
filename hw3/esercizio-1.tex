@@ -1,0 +1,42 @@
+\section*{Esercizio 1}
+
+Siano \(f, g \in \mathcal{S} \mathbb{R}^n\) e mostriamo che
+\(f \ast g \in \mathcal{S}\mathbb{R}^n\). Consideriamo \(\alpha, \beta \in \mathbb{N}^n\).
+\begin{align*}
+  \left\lvert x^\alpha D^\beta(f \ast g)(x) \right\rvert
+  &= \left\lvert x^\alpha (D^\beta f \ast g)(x) \right\rvert = \\
+  &= \left\lvert x^\alpha \int_{\mathbb{R}^n}^{} D^\beta f(x - y) g(y) \mathrm d y
+    \right\rvert \leq \\
+  &\leq \int_{\mathbb{R}^n}^{} \left\lvert x^\alpha \right\rvert \left\lvert D^\beta f(x - y)
+    \right\rvert \left\lvert g(y) \right\rvert \mathrm d y
+\end{align*}
+Poiché \(f, g \in \mathcal{S}\mathbb{R}^n\), allora comunque presi
+\(\alpha_1, \alpha_2 \in \mathbb{N}^n\) esistono
+\(C_f , C_g \in \mathbb{R}\) per cui per ogni \(z \in \mathbb{R}^n\) si ha
+\begin{align*}
+  & \left\lvert D^\beta f(z) \right\rvert \leq
+    \frac{C_f}{\left\lvert z^{\alpha_1} \right\rvert} \\
+  & \left\lvert g(z) \right\rvert \leq \frac{C_g}{\left\lvert z^{\alpha_2} \right\rvert} 
+\end{align*}
+Pertanto riprendendo dall'ultimo membro si ha
+\begin{align*}
+  \phantom{\left\lvert x^\alpha D^\beta(f \ast g)(x) \right\rvert}
+  & \leq  \int_{\mathbb{R}^n}^{} \left\lvert x^\alpha \right\rvert \frac{C_f}{\left\lvert
+    (x-y)^{\alpha_1} \right\rvert} \frac{C_g}{\left\lvert y^{\alpha_2}
+    \right\rvert} \mathrm d y \leq \\
+  & \leq C_f C_g \int_{\mathbb{R}^n}^{}  \frac{\left\lvert x^\alpha \right\rvert}{\left\lvert
+    (x-y)^{\alpha_1} \right\rvert \left\lvert y^{\alpha_2}
+    \right\rvert} \mathrm d y  
+\end{align*}
+Scegliendo ora \(\alpha_1\) e \(\alpha_2\) con la componenti minime
+sufficientemente grande, abbiamo che l'ultimo integrale muore per
+\(\left\lvert x \right\rvert \to +\infty\). Questo basta per dire che la
+funzione liscia \(x \mapsto x^\alpha D^\beta f(x)\) è limitata.
+
+%%% Local Variables:
+%%% mode: LaTeX
+%%% TeX-engine: luatex
+%%% ispell-local-dictionary: "italian"
+%%% TeX-master: "main"
+%%% End:
+

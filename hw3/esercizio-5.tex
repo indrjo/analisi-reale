@@ -1,0 +1,29 @@
+\section*{Esercizio 5}
+
+Sia \(f \in \mathcal{L}^2[-1, 1]\) e \(p : [-1, 1] \to \mathbb{R}\) la funzione polinomiale
+\[
+  p(x) := \sum_{k=0}^{N} a_kx^k
+\]
+e calcoliamo la distanza da \(f\):
+\begin{align*}
+  \left\lVert f - p \right\rVert_2^2
+  &= \int_{-1}^{1} (f(x) - p(x))^2 \mathrm d x = \\
+  &= \int_{-1}^{1} p(x)^2 \mathrm d x + \int_{-1}^{1} f(x)^2 \mathrm d x - 2
+    \sum_{k=0}^{N} a_k \int_{-1}^{1} x^k f(x) \mathrm d x 
+\end{align*}
+Derivando rispetto ad \(a_\mu\) e ponendo uguale a \(0\) si trova \((a_1,
+\dots, a_N)\) che rende minima la distanza \(\left\lVert f - p
+\right\rVert_2\). Si ha così il sistema
+\[
+  \sum_{j=0}^{N} a_j \int_{-1}^{1} x^{\mu + j} \mathrm d x = \int_{-1}^{1} x^\mu f(x)
+  \mathrm d x \quad\text{per } \mu \in \left\{ 0, \dots, N \right\}
+\]
+nelle \(N\) incognite \(a_1, \dots, a_N\).
+
+%%% Local Variables:
+%%% mode: LaTeX
+%%% TeX-engine: luatex
+%%% ispell-local-dictionary: "italian"
+%%% TeX-master: "main"
+%%% End:
+

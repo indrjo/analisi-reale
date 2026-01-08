@@ -1,0 +1,64 @@
+\section*{Esercizio 3}
+
+Verifichiamo che
+\(\left\langle \cdot, \cdot \right\rangle : \mathcal{H} \times \mathcal{H} \to K\) (dove
+\(K\) è \(\mathbb{R}\) oppure \(\mathbb{C}\)) è un prodotto scalare.
+\begin{enumerate}
+\item Linearità nel primo argomento. Siano \(f, g, h \in \mathcal{H}\) e
+  \(\lambda_1, \lambda_2 \in K\).
+  \begin{align*}
+    \left\langle \lambda_1 f + \lambda_2 g, h \right\rangle
+    &= \int_{[0,1]} (\lambda_1 f + \lambda_2 g)'(x) h'(x) \mathrm d x = \\
+    &= \lambda_1 \int_{[0,1]}f'(x) h'(x) \mathrm d x + \lambda_2 \int_{[0,1]}g'(x) h'(x)
+      \mathrm d x = \\
+    &=  \lambda_1 \left\langle f, h \right\rangle +  \lambda_2 \left\langle g, h \right\rangle .
+  \end{align*}
+\item Skew-simmetria. In realtà è proprio simmetrico, cioè
+  \(\left\langle f, g \right\rangle = \left\langle g, f \right\rangle\) per ogni \(f, g \in \mathcal{H}\).
+\item Sia \(f \in \mathcal{H}\). Allora
+  \(\left\langle f, f \right\rangle = \left\lVert f' \right\rVert_2^2 \ge 0\). Così
+  facendo, si deduce che se \(\left\langle f, f \right\rangle = 0\), allora,
+  \(f' = 0\) quasi ovunque. Poiché \(f \in AC[0, 1]\), si ha che
+  \[
+    f(x) = f(0) + \int_{0}^{x} f'(t) \mathrm d t = 0 \qquad\text{per ogni } x \in
+    [0, 1] .
+  \]
+\end{enumerate}
+
+Rimane da provare che lo spazio vettoriale \(\mathcal{H}\) con la norma indotta
+dal prodotto scalare
+\[
+  \left\lVert f \right\rVert := \sqrt{\left\langle f, f \right\rangle}
+\]
+è uno spazio di Banach. Sia quindi
+\(\left\{ f_n \mid n \in \mathbb{N} \right\} \subseteq \mathcal{H}\) una successione di Cauchy rispetto
+alla norma \(\left\lVert \cdot \right\rVert\). Se è così, allora
+\(\left\{ f_n' \mid n \in \mathbb{N} \right\} \subseteq \mathcal{L}^2[0, 1]\) è una successione di
+Cauchy rispetto alla norma \(\left\lVert \cdot \right\rVert_2\). Infatti
+ricordare che
+\[
+  \left\lVert f \right\rVert = \left\lVert f' \right\rVert_2 .
+\]
+Poiché
+\(\left(\mathcal{L}^2[0, 1], \left\lVert \cdot \right\rVert_2\right)\) è di Banach,
+allora \(f_n'\) converge a un qualche elemento di
+\(\mathcal{L}^2[0, 1]\) che indichiamo con \(f'\). A questo punto introduciamo
+\begin{align*}
+  & f : [0, 1] \to K \\
+  & f(x) := \int_{0}^{x} f'(t) \mathrm d t .
+\end{align*}
+Questa funzione è assolutamente continua, \(f(0) = 0\) e la sua derivata
+quasi ovunque è proprio \(f'\): pertanto \(f \in \mathcal{H}\). Concludiamo
+\[
+  \left\lVert f - f_n \right\rVert = \left\lVert (f - f_n)'
+  \right\rVert_2 = \left\lVert f' - f_n' \right\rVert_2 \to 0 \quad \text{per
+  } n \to +\infty .
+\]
+
+%%% Local Variables:
+%%% mode: LaTeX
+%%% TeX-engine: luatex
+%%% ispell-local-dictionary: "italian"
+%%% TeX-master: "main"
+%%% End:
+
