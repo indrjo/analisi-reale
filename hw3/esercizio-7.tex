@@ -1,35 +1,81 @@
 \section*{Esercizio 7}
 
-\begin{enumerate}
-\item {\em Mostriamo che \(T \in \mathcal{L}(\mathcal{H})\) è autoaggiunto.} In questo caso,
-  ricordiamo che il prodotto scalare di \(\mathcal{H}\) è definito come
-  \[
-    \left\langle f, g \right\rangle = \int_{[0,1]}^{} f(x) \bar{g(x)} \mathrm d x .
-  \]
-  Verifichiamo quindi che
-  \(\left\langle Tf, g \right\rangle = \left\langle f, Tg \right\rangle\) per calcolo
-  diretto. Il primo membro è
-  \[
-    \left\langle Tf, g \right\rangle = \int_{[0, 1]}^{} \int_{[0, 1]}^{} K(x, y) f(y)
-    \bar{g(x)} \mathrm d y \mathrm d x
-  \]
-  mentre il secondo membro è
-  \[
-    \left\langle f, Tg \right\rangle = \int_{[0, 1]}^{} \int_{[0, 1]}^{} \bar{K(x, y)}
-    f(y) \bar{g(x)} \mathrm d y \mathrm d x
-  \]
-  Per concludere questa parte basta osservare che \(K = \bar{K}\).
+% \begin{enumerate}
+% \item {\em Mostriamo che \(T \in \mathcal{L}(\mathcal{H})\) è autoaggiunto.} In questo caso,
+%   ricordiamo che il prodotto scalare di \(\mathcal{H}\) è definito come
+%   \[
+%     \left\langle f, g \right\rangle = \int_{[0,1]}^{} f(x) \bar{g(x)} \mathrm d x .
+%   \]
+%   Verifichiamo quindi che
+%   \(\left\langle Tf, g \right\rangle = \left\langle f, Tg \right\rangle\) per calcolo
+%   diretto. Il primo membro è
+%   \[
+%     \left\langle Tf, g \right\rangle = \int_{[0, 1]}^{} \int_{[0, 1]}^{} K(x, y) f(y)
+%     \bar{g(x)} \mathrm d y \mathrm d x
+%   \]
+%   mentre il secondo membro è
+%   \[
+%     \left\langle f, Tg \right\rangle = \int_{[0, 1]}^{} \int_{[0, 1]}^{} \bar{K(x, y)}
+%     f(y) \bar{g(x)} \mathrm d y \mathrm d x
+%   \]
+%   Per concludere questa parte basta osservare che \(K = \bar{K}\).
 
-\item {\em \(T\) è compatto.}
-  \(K \in \mathcal{L}^2([0, 1] \times [0, 1])\) e quindi \(T\) è un operatore di
-  Hilbert-Schmidt, che è compatto. (Cfr. Proposizione 3.5.2 delle note
-  del corso.)
+% \item {\em \(T\) è compatto.}
+%   \(K \in \mathcal{L}^2([0, 1] \times [0, 1])\) e quindi \(T\) è un operatore di
+%   Hilbert-Schmidt, che è compatto. (Cfr. Proposizione 3.5.2 delle note
+%   del corso.)
 
-\item {\em Trovare lo spettro di \(T\).} Osserviamo che essendo \(T\)
-  autoaggiunto, allora i suoi autovalori sono tutti reali
-  (cfr. Proposizione 3.6.6). Inoltre gli elementi non nulli dello spetto
-  sono autovalori di \(T\) (cfr. Proposizione 3.6.9). {\color{red} [Niente.]}
-\end{enumerate}
+% \item {\em Trovare lo spettro di \(T\).} Osserviamo che essendo \(T\)
+%   autoaggiunto, allora i suoi autovalori sono tutti reali
+%   (cfr. Proposizione 3.6.6). Inoltre gli elementi non nulli dello spetto
+%   sono autovalori di \(T\) (cfr. Proposizione 3.6.9). {\color{red} [Niente.]}
+% \end{enumerate}
+
+Sia $\mathcal{H} = L^2([0, 1], \mathbb{C})$. Si considerino $A, B \in L^2([0, 1], \mathbb{R})$ due funzioni linearmente indipendenti. Si definisce l'operatore $T \in \mathcal{L}(\mathcal{H})$ da:
+\[ (Tf)(x) = \int_{0}^{1} K(x, y) f(y) \, dy \quad \text{con } K(x, y) = A(x)B(y) + A(y)B(x) \]
+\\
+Per un operatore integrale, il carattere autoaggiunto è garantito se il nucleo soddisfa
+\\ $K(x, y) = \overline{K(y, x)}$. 
+Qui, le funzioni $A$ et $B$ sono reali, quindi $K$ è reale. Infatti:
+\[ K(y, x) = A(y)B(x) + A(x)B(y) = A(x)B(y) + A(y)B(x) = K(x, y) \]
+Essendo il nucleo reale e simmetrico, l'operatore $T$ è autoaggiunto $T = T^*$.
+
+\paragraph{1. Compattezza:}
+Si ha:
+\[ (Tf)(x) = A(x) \int_{0}^{1} B(y)f(y) \, dy + B(x) \int_{0}^{1} A(y)f(y) \, dy \]
+Utilizzando il prodotto scalare standard $\langle f, g \rangle = \int f \bar{g}$, si ha:
+\[ (Tf)(x) = \langle f, B \rangle A(x) + \langle f, A \rangle B(x) \]
+Questo mostra che $\text{Im}(T) \subseteq \text{Vect}(A, B)$. L'immagine di $T$ è quindi di dimensione al massimo 2. 
+$T$ è un operatore di rango finito, il che implica direttamente che è compatto.
+
+\paragraph{2. Spettro $\sigma(T)$:}
+Poiché $T$ è compatto in dimensione infinita, il suo spettro è composto dai suoi autovalori e da $0$. 
+Sia $\lambda \neq 0$ un autovalore. Allora $f = \frac{1}{\lambda} Tf \in \text{Vect}(A, B)$. Poniamo $f = \alpha A + \beta B$. 
+L'equazione $Tf = \lambda f$ porta al sistema lineare:
+\[
+\begin{cases}
+\alpha \langle A, B \rangle + \beta \|B\|^2 = \lambda \alpha \\
+\alpha \|A\|^2 + \beta \langle A, B \rangle = \lambda \beta
+\end{cases}
+\implies
+\begin{pmatrix} \langle A, B \rangle - \lambda & \|B\|^2 \\ \|A\|^2 & \langle A, B \rangle - \lambda \end{pmatrix} \begin{pmatrix} \alpha \\ \beta \end{pmatrix} = 0
+\]
+Il determinante deve essere nullo: $(\langle A, B \rangle - \lambda)^2 - \|A\|^2 \|B\|^2 = 0$. 
+Gli autovalori sono $\lambda_{\pm} = \langle A, B \rangle \pm \|A\| \|B\|$. 
+Pertanto, $\sigma(T) = \{0, \langle A, B \rangle + \|A\| \|B\|, \langle A, B \rangle - \|A\| \|B\|\}$.
+
+\paragraph{3. $\|K\|_{L^2} > \|T\|$:}
+1. La norma dell'operatore è
+$\|T\| = \max(|\lambda_+|, |\lambda_-|) = \|A\|\|B\| + |\langle A, B \rangle|$.
+\\
+2. La norma di Hilbert-Schmidt è
+$\|K\|_{L^2}^2 = \iint |K(x,y)|^2 dx dy = 2\|A\|^2\|B\|^2 + 2\langle A, B \rangle^2$.
+\\
+Si nota che
+$\|K\|_{L^2}^2 - \|T\|^2 = (\|A\|\|B\| - |\langle A, B \rangle|)^2$.  In base alla
+diseguaglianza di Cauchy-Schwarz, poiché $A$ e $B$ sono linearmente
+indipendenti, $|\langle A, B \rangle| < \|A\|\|B\|$.  La differenza è quindi
+strettamente positiva: $\|K\|_{L^2} > \|T\|$. Le quantità non coincidono.
 
 
 

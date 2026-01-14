@@ -1,5 +1,45 @@
 \section*{Esercizio 6}
 
+Sia $\mathcal{H} = L^2(\mathbb{R}, \mathbb{C})$. Si consideri l'operatore $T \in \mathcal{L}(\mathcal{H})$ definito da:
+\[ (Tf)(x) = x \chi_{[0,1]}(x) f(x) \]
+Indichiamo $h(x) = x \chi_{[0,1]}(x)$. $T$ è quindi l'operatore di moltiplicazione per la funzione $h$.
+
+\paragraph{1. Norma di $T$:}
+Per un operatore di moltiplicazione $M_h$ su $L^2$, la norma dell'operatore è data dalla norma infinito essenziale della funzione moltiplicatrice:
+\[ \|T\| = \|h\|_{\infty} \]
+Qui, $h(x)$ è definita da:
+\[ h(x) = 
+\begin{cases} 
+x & \text{se } x \in [0, 1] \\
+0 & \text{altrimenti}
+\end{cases}
+\]
+Sull'intervallo $[0, 1]$, il valore massimo di $|x|$ è $1$. Al di fuori, la funzione è nulla. Pertanto:
+\[ \|T\| = \sup_{x \in [0,1]} |x| = 1 \]
+
+\paragraph{2. Spettro $\sigma(T)$:}
+
+Lo spettro di un operatore di moltiplicazione per una funzione $h$ corrisponde all'immagine essenziale di tale funzione. 
+L'immagine della funzione $h(x) = x \chi_{[0,1]}(x)$ è l'insieme dei valori raggiunti da $h$ su $\mathbb{R}$:
+\begin{itemize}
+    \item Per $x \in [0, 1]$, $h(x)$ percorre l'intervallo $[0, 1]$.
+    \item Per $x \notin [0, 1]$, $h(x) = 0$, valore già incluso nell'intervallo precedente.
+\end{itemize}
+Lo spettro è quindi l'intervallo chiuso:
+\[ \sigma(T) = [0, 1] \]
+
+\paragraph{3. Spettro puntuale $\sigma_p(T)$:}
+$\lambda$ è un autovalore di $T$ se esiste una funzione $f \in L^2(\mathbb{R})$ non nulla tale che $Tf = \lambda f$, ovvero:
+\[ (h(x) - \lambda) f(x) = 0 \quad \text{quasi ovunque} \]
+Questo impone che $f$ sia nulla quasi ovunque al di fuori dell'insieme $E_\lambda = \{x \in \mathbb{R} : h(x) = \lambda\}$. Affinché $f$ sia non nulla in $L^2$, la misura di Lebesgue di $E_\lambda$ deve essere strettamente positiva ($\mu(E_\lambda) > 0$).
+
+\begin{itemize}
+    \item \textbf{Caso $\lambda \in (0, 1]$:} L'equazione $h(x) = \lambda$ possiede un'unica soluzione $x = \lambda$. Un punto singolo ha misura nulla. Pertanto, questi valori non sono autovalori.
+    \item \textbf{Caso $\lambda = 0$:} L'insieme $E_0 = \{x \in \mathbb{R} : h(x) = 0\}$ è uguale a $(-\infty, 0] \cup (1, +\infty)$. Questo insieme ha misura infinita (quindi $>0$). Possiamo definire una funzione $f = \chi_{[2,3]} \in L^2$ che soddisfa $Tf = 0$. 
+\end{itemize}
+L'unico autovalore dell'operatore è quindi:
+\[ \sigma_p(T) = \{0\} \]
+
 %%% Local Variables:
 %%% mode: LaTeX
 %%% TeX-engine: luatex

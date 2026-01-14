@@ -1,6 +1,38 @@
 \section*{Esercizio 4}
 
+Sia $K \subseteq \mathbb{C}$ un compatto non vuoto. Mostrare che esiste un operatore $T: l^{2}(\mathbb{N}, \mathbb{C}) \rightarrow l^{2}(\mathbb{N}, \mathbb{C})$ il cui spettro è $K$.
 
+\paragraph{1.} 
+Lo spazio $\mathbb{C}$ è separabile perché contiene $\mathbb{Q} + i\mathbb{Q}$, che è numerabile e denso. Poiché ogni sottospazio di uno spazio metrico separabile è separabile, il compatto $K$ è separabile. Esiste quindi una successione numerabile $K_0 = \{\lambda_n\}_{n \in \mathbb{N}}$ tale che:
+\[ \overline{\{\lambda_n : n \in \mathbb{N}\}} = K \]
+
+\paragraph{2.}
+Consideriamo l'operatore diagonale $T$ definito sullo spazio di Hilbert $l^2(\mathbb{N})$ da:
+\[ T(x_n)_{n \in \mathbb{N}} = (\lambda_n x_n)_{n \in \mathbb{N}} \]
+Poiché $K$ è un compatto, la successione $(\lambda_n)$ è limitata da una costante $M = \sup_{\lambda \in K} |\lambda|$. Si ha allora:
+\[ \|T(x_n)\|^2_{l^2} = \sum_{n=0}^{\infty} |\lambda_n x_n|^2 \le M^2 \sum_{n=0}^{\infty} |x_n|^2 = M^2 \|(x_n)\|^2_{l^2} \]
+L'operatore $T$ è quindi lineare e limitato.
+
+\paragraph{3. Spettro $\sigma(T)$}
+Procediamo per doppia inclusione.
+\begin{itemize}
+\item \textbf{$K \subseteq \sigma(T)$:} Per ogni $n \in \mathbb{N}$,
+  $\lambda_n$ è un autovalore di $T$ associato all'autovettore $e_n$ (il
+  vettore della base canonica). Pertanto,
+  $\{\lambda_n\}_{n \in \mathbb{N}} \subseteq \sigma_p(T) \subseteq \sigma(T)$. Poiché lo spettro di un operatore
+  limitato è un insieme chiuso, esso contiene la chiusura di questo
+  insieme: $K = \overline{\{\lambda_n\}} \subseteq \sigma(T)$.
+    
+\item \textbf{$\sigma(T) \subseteq K$:} Sia $\mu \notin K$. Poiché $K$ è chiuso, la distanza
+  $d = \text{dist}(\mu, K)$ è strettamente positiva. Per ogni $n$,
+  $|\lambda_n - \mu| \ge d > 0$. L'operatore inverso potenziale
+  $S = (T - \mu I)^{-1}$ sarebbe definito da
+  $S(x_n) = (\frac{1}{\lambda_n - \mu} x_n)$. Poiché
+  $|\frac{1}{\lambda_n - \mu}| \le \frac{1}{d} < \infty$, questo operatore diagonale è
+  limitato su $l^2$. Pertanto, $\mu$ appartiene all'insieme risolvente,
+  quindi $\mu \notin \sigma(T)$.
+\end{itemize}
+Per doppia inclusione, abbiamo correttamente $\sigma(T) = K$.
 
 %%% Local Variables:
 %%% mode: LaTeX

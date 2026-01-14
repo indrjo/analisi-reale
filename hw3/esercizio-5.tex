@@ -1,6 +1,18 @@
 \section*{Esercizio 5}
 
-Sia \(f \in \mathcal{L}^2[-1, 1]\) e \(p : [-1, 1] \to \mathbb{R}\) la funzione polinomiale
+Consideriamo il sottospazio
+\[
+  V := \left\{ p : [-1, 1] \to \mathbb{R} \mid p \text{ funzione polinomiale di grado
+    } \leq N \right\} .
+\]
+È un sottospazio lineare chiuso (i sottospazi di dimensione finita di
+uno spazio normato sono tutti chiusi.) Possiamo quindi usare il teorema
+di proiezione: esiste uno e un solo \(p_f \in V\) tale che
+\(\left\lVert f - p_f \right\rVert_2 = \inf_{p \in V} \left\lVert f - p
+\right\rVert_2\).
+
+Sia quindi \(f \in \mathcal{L}^2[-1, 1]\) e
+\(p : [-1, 1] \to \mathbb{R}\) la funzione polinomiale
 \[
   p(x) := \sum_{k=0}^{N} a_kx^k
 \]
@@ -11,14 +23,32 @@ e calcoliamo la distanza da \(f\):
   &= \int_{-1}^{1} p(x)^2 \mathrm d x + \int_{-1}^{1} f(x)^2 \mathrm d x - 2
     \sum_{k=0}^{N} a_k \int_{-1}^{1} x^k f(x) \mathrm d x 
 \end{align*}
-Derivando rispetto ad \(a_\mu\) e ponendo uguale a \(0\) si trova \((a_1,
-\dots, a_N)\) che rende minima la distanza \(\left\lVert f - p
-\right\rVert_2\). Si ha così il sistema
+Troviamo i coefficienti \(a_0, \dots, a_N \in \mathbb{R}\) che minimizzano la
+distanza sopra, i quali sono unicamente determinati come osservato
+all'inizio. Derivando rispetto ad \(a_\mu\) e ponendo uguale a \(0\) si
+trova il sistema
 \[
   \sum_{j=0}^{N} a_j \int_{-1}^{1} x^{\mu + j} \mathrm d x = \int_{-1}^{1} x^\mu f(x)
   \mathrm d x \quad\text{per } \mu \in \left\{ 0, \dots, N \right\}
 \]
 nelle \(N\) incognite \(a_1, \dots, a_N\).
+
+Osserviamo inoltre che in alcuni casi il sistema è più semplice da
+risolvere. Se \(f : [-1, 1] \to \mathbb{R}\) è pari, allora la funzione polinomiale
+\begin{align*}
+  & q : [-1, 1] \to \mathbb{R} \\
+  & q(x) := p_f(-x)
+\end{align*}
+soddisfa
+\(\left\lVert f - q \right\rVert_2 = \left\lVert f - p_f
+\right\rVert_2\). Questo però implica che \(p_f = q\) a causa
+dell'unicità. Quindi \(p_f\) è pari.
+
+Le funzioni polinomiali pari sono quelle i cui coefficienti dei monomi
+di grado dispari sono nulli. Questo nel nostro caso significa rimangono
+da determinare gli \(a_k\) con \(k\) pari.
+
+
 
 %%% Local Variables:
 %%% mode: LaTeX

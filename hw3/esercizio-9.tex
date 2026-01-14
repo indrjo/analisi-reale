@@ -1,0 +1,162 @@
+\section*{Esercizio 9}
+
+Siano $\mathcal{H} := L^2([0, +\infty), \mathbb{C})$ e l'operatore
+$T : \mathcal{H} \to \mathcal{H}$ definito da $(Tf)(x) =: f(4x)$.
+
+\begin{enumerate}[label=(\alph*)]
+\item Mostriamo che per ogni \(f \in \mathcal{H}\) si ha
+  \(Tf \in \mathcal{H}\). La linearità è immediata. Per la limitatezza osserviamo
+  che
+  \[
+    \|Tf\|^2 = \int_0^{+\infty} |f(4x)|^2 \mathrm dx = \frac{1}{4} \int_0^{+\infty}
+    |f(u)|^2 \mathrm du = \frac{1}{4} \|f\|^2
+  \]
+  e quindi
+  \[
+    \left\lVert T \right\rVert = \sup_{f \ne 0} \frac{\left\lVert Tf
+      \right\rVert}{\left\lVert f \right\rVert} = \frac{1}{2} .
+  \]
+  Cerchiamo l'operatore $T^*$ tale che $\langle Tf, g \rangle = \langle f, T^*g \rangle$.
+  \begin{align*}
+    \left\langle Tf, g \right\rangle &= \int_0^{+\infty} f(4x)\overline{g(x)} \mathrm dx =\\
+                         &= \int_0^{+\infty} f(u)\overline{g\left(\frac{1}{4} u
+                           \right)} \frac{1}{4} \mathrm du = \\
+                         &= \int_0^{+\infty} f(u)\overline{\frac{1}{4} g\left(\frac{1}{4} u
+                           \right)} \mathrm du
+  \end{align*}
+  Possiamo quindi scegliere
+  \(\left( T^* g \right)(x) := \frac{1}{4} g\left(\frac{1}{4} u
+  \right)\). Verifichiamo che \(TT^* = T^*T = \frac{1}{4}I\):
+  \begin{align*}
+    & T \left( T^*f \right)(x) = (T^*f)(4x) = \frac{1}{4}f\left(\frac{4x}{4}\right)
+      = \frac{1}{4}f(x) \\
+    & T^*(Tf)(x) = \frac{1}{4}(Tf)\left(\frac{x}{4}\right) =
+      \frac{1}{4}f\left(4 \frac{x}{4} \right) = \frac{1}{4}f(x)
+  \end{align*}
+  In particolare, l'operatore $2T$ è unitario. Poiché lo spettro di un
+  operatore unitario è incluso nel cerchio unitario $\mathbb{S}^1$, ne
+  deduciamo che $\sigma(T) \subseteq \frac{1}{2} \mathbb{S}^1$.
+
+\item Risolviamo $(\lambda I - T)f = g$.
+  \begin{itemize}
+
+  \item {\em Caso $|\lambda| > 1/2$ .}  Utilizzando l'identità della domanda
+    (d)(i), otteniamo l'espressione di $f$:
+    \[
+      f = \sum_{n=0}^{N-1} \lambda^{-n-1} T^n g + \lambda^{-N} T^N f
+    \]
+    da cui
+    \[
+      \left\lVert f - \sum_{n=0}^{N-1} \lambda^{-n-1} T^n g \right\rVert =
+      \left\lvert \lambda \right\rvert^{-N} \left\lVert T^N f \right\rVert
+    \]
+    A secondo membro osserviamo che
+    \(\left\lVert T^N f \right\rVert = \frac{1}{2^N} \left\lVert f
+    \right\rVert\) e quindi la formula diventa:
+    \[
+      \left\lVert f - \sum_{n=0}^{N-1} \lambda^{-n-1} T^n g \right\rVert =
+      \left(\frac{1}{2\left\lvert \lambda \right\rvert}\right)^N \left\lVert f
+      \right\rVert
+    \]
+    Facendo \(N \to +\infty\), possiamo ottenere la formula esplicita:
+    \[
+      f(x) = \sum_{n=0}^{\infty} \frac{g(4^n x)}{\lambda^{n+1}} .
+    \]
+
+  \item {\em Caso $|\lambda| < 1/2$.}  Poiché $T$ è invertibile con
+    $T^{-1} = 4T^*$, riscriviamo l'equazione:
+    \[
+      (\lambda I - T)f = g \iff -T(I - \lambda T^{-1})f = g \iff (I - \lambda T^{-1})f =
+      -T^{-1}g
+    \]
+    Poiché $\|T^{-1}\| = 2$ e $|\lambda| < 1/2$, si ha
+    $\|\lambda T^{-1}\| < 1$. Si applica la serie di Neumann:
+    \[
+      f = -\sum_{n=0}^{\infty} \lambda^n (T^{-1})^{n+1}g \implies f(x) = -\sum_{n=1}^{\infty}
+      \lambda^{n-1} g\left(\frac{x}{4^n}\right)
+    \]
+  \end{itemize}
+
+\item Supponiamo $Tf = \lambda f$. Allora
+  $|f(4x)|^2 = |\lambda|^2 |f(x)|^2 = \frac{1}{4}|f(x)|^2$.  Poniamo
+  $I_n = \int_{4^n}^{4^{n+1}} |f(x)|^2 \mathrm dx$. Con $x=4u$:
+  \begin{align*}
+    \int_{4^n}^{4^{n+1}} |f(x)|^2 \mathrm dx &= \int_{4^{n-1}}^{4^n} |f(4u)|^2 4\mathrm du = 4
+                                            \int_{4^{n-1}}^{4^n} \frac{1}{4}|f(u)|^2 \mathrm du  = \dots = \\
+                                          &= \int_{4^0}^{4^1}
+                                            |f(x)|^2 \mathrm dx = \int_{1}^{4} |f(x)|^2 \mathrm dx
+  \end{align*}
+  Pertanto, $I_n = I_o = \int_{4}^{1} |f(x)|^2 \mathrm du $ per ogni
+  $n$.  Poiché
+  $\|f\|^2 = \sum_{n \in \mathbb{Z}} I_n = \sum_{n \in \mathbb{Z}} I_o$, se
+  $I_o > 0$, la somma di un'infinità di termini costanti strettamente
+  positivi divergerebbe verso l'infinito. Affinché $f$ appartenga a
+  $L^2$, la sua norma $\|f\|^2$ deve essere finita, il che impone
+  $I_o = 0$. Poiché $I_o = \int_{1}^{4} |f(x)|^2 \mathrm dx = 0$, la
+  funzione $f$ è nulla quasi ovunque su $[1, 4]$, e per induzione su tutto $[0, +\infty)$. Ne concludiamo che
+  $\ker(\lambda I - T) = \{0\}$ per $|\lambda| = 1/2$.
+
+\item
+  \begin{enumerate}[label=(\roman*)]
+  \item Sostituendo successivamente
+    $f = \lambda^{-1}g + \lambda^{-1}Tf$, nel termine residuo di
+    $\lambda f = g + Tf$, si costruisce la somma richiesta:
+    $\lambda f = \sum_{n=0}^{N-1} \lambda^{-n} T^n g + \lambda^{-N+1} T^N f$.
+
+  \item Per la diseguaglianza triangolare inversa infatti:
+    \[
+      \lambda f = \sum_{n=0}^{N-1} \lambda^{-n} T^n g + \lambda^{-N+1} T^N f
+    \]
+    Ricordiamo che $\|T^N f\| = \left(\frac{1}{2}\right)^N \|f\|$.
+    \[
+      |\lambda| \|f\| \ge \left\| \sum_{n=0}^{N-1} \lambda^{-n} T^n g \right\| - |\lambda|^{-N+1}
+      \|T^N f\| .
+    \]
+    Se $ |\lambda| = \frac{1}{2}$, concludiamo
+    \[
+      \|f\| \ge \left\| \sum_{n=0}^{N-1} \lambda^{-n} T^n g \right\| .
+    \]
+
+  \item Vedi punto precedente.
+
+  \item Se $g$ è supportata su $[1,4]$, le funzioni $T^n g$ hanno
+    supporti $I_n = \left[4^{-n}, 4^{-n+1}\right]$. Gli intervalli
+    \(I_m \) e \(I_n\) sono disgiunti se $m \neq n + 1$, altrimenti la loro
+    intersezione si riduce al punto singolo $\{4^{-n}\}$. Poiché
+    il prodotto $(T^n g)(x) \overline{(T^m g)(x)}$ è nullo ovunque
+    tranne eventualmente in un punto, si ha
+    \[
+      \left\langle T^n g, T^m g \right\rangle = \int_0^{+\infty} (T^n g)(x) \overline{(T^m
+        g)(x)} \, \mathrm dx = 0 \quad \text{se } n \neq m .
+    \]
+    Usiamo il teorema di Pitagora:
+    \[
+      \|f\|^2 \ge \left\| \sum_{n=0}^{N-1} \lambda^{-n} T^n g \right\|^2 =
+      \sum_{n=0}^{N-1} |\lambda|^{-2n} \|T^n g\|^2 \quad\text{per ogni }N .
+    \]
+
+  \item Per quanto visto fino ad ora, $\|T^n g\| = (1/2)^n \|g\|$. Per
+    $|\lambda| = \frac{1}{2}$, ne segue che:
+    \[
+      \|f\|^2 \ge \sum_{n=0}^{N-1} |\lambda|^{-2n} \|T^n g\|^2 = \sum_{n=0}^{N-1} 4^n
+      \frac{1}{4^n} \|g\|^2 = N \|g\|^2 .
+    \]
+    Se $g \neq 0$, allora $N \|g\|^2 \to +\infty$ per $N \to \infty$. Ma questa è una
+    contraddizione con $f \in L^2$. L'operatore non è surgettivo.
+  \end{enumerate}
+
+\item L'operatore non è invertibile se e solo se $|\lambda| = 1/2$. Pertanto
+  $\sigma(T) = \{ \lambda \in \mathbb{C} : |\lambda| = 1/2 \}$, tuttavia è iniettivo per
+  questi valori di $\lambda$, di conseguenza lo spettro residuo è
+  $\sigma_r(T) = \emptyset$. (Nota: $\sigma_o$ è stato interpretato come spettro
+  residuo).
+\end{enumerate}
+
+
+%%% Local Variables:
+%%% mode: LaTeX
+%%% TeX-engine: luatex
+%%% ispell-local-dictionary: "italian"
+%%% TeX-master: "main"
+%%% End:
+
